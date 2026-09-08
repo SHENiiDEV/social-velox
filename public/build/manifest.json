@@ -1,35 +1,35 @@
 {
-  "_LegalLayout-BvD7c7UJ.js": {
-    "file": "assets/LegalLayout-BvD7c7UJ.js",
+  "_LegalLayout-Czf_2nA8.js": {
+    "file": "assets/LegalLayout-Czf_2nA8.js",
     "name": "LegalLayout",
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-2km6TrZb.js"
+      "_MainLayout-CLzIYnLz.js"
     ]
   },
-  "_MainLayout-2km6TrZb.js": {
-    "file": "assets/MainLayout-2km6TrZb.js",
+  "_MainLayout-CLzIYnLz.js": {
+    "file": "assets/MainLayout-CLzIYnLz.js",
     "name": "MainLayout",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_ObsidianEmblemSvg-DKz0pAqP.js": {
-    "file": "assets/ObsidianEmblemSvg-DKz0pAqP.js",
+  "_ObsidianEmblemSvg-Dw_JkNFj.js": {
+    "file": "assets/ObsidianEmblemSvg-Dw_JkNFj.js",
     "name": "ObsidianEmblemSvg",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_search-CItOMOFH.js": {
-    "file": "assets/search-CItOMOFH.js",
+  "_search-D3xU4htv.js": {
+    "file": "assets/search-D3xU4htv.js",
     "name": "search",
     "imports": [
-      "_MainLayout-2km6TrZb.js"
+      "_MainLayout-CLzIYnLz.js"
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-B0rgJqzO.css",
+    "file": "assets/app-DpaJqs6-.css",
     "name": "app",
     "names": [
       "app.css"
@@ -38,126 +38,126 @@
     "isEntry": true
   },
   "resources/js/Pages/Admin/Dashboard.jsx": {
-    "file": "assets/Dashboard-up1pknAq.js",
+    "file": "assets/Dashboard-DR8mNokH.js",
     "name": "Dashboard",
     "src": "resources/js/Pages/Admin/Dashboard.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-2km6TrZb.js"
+      "_MainLayout-CLzIYnLz.js"
     ]
   },
   "resources/js/Pages/Admin/Users.jsx": {
-    "file": "assets/Users-D3wLXkN_.js",
+    "file": "assets/Users-DZkf9kym.js",
     "name": "Users",
     "src": "resources/js/Pages/Admin/Users.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-2km6TrZb.js",
-      "_search-CItOMOFH.js"
+      "_MainLayout-CLzIYnLz.js",
+      "_search-D3xU4htv.js"
     ]
   },
   "resources/js/Pages/Auth/ResetPassword.jsx": {
-    "file": "assets/ResetPassword-Wb-8lN_y.js",
+    "file": "assets/ResetPassword-CBw7ARiv.js",
     "name": "ResetPassword",
     "src": "resources/js/Pages/Auth/ResetPassword.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-2km6TrZb.js"
+      "_MainLayout-CLzIYnLz.js"
     ]
   },
   "resources/js/Pages/GamePlayer.jsx": {
-    "file": "assets/GamePlayer-BxZBq2sW.js",
+    "file": "assets/GamePlayer-CRAfKJN4.js",
     "name": "GamePlayer",
     "src": "resources/js/Pages/GamePlayer.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-2km6TrZb.js",
-      "_ObsidianEmblemSvg-DKz0pAqP.js"
+      "_MainLayout-CLzIYnLz.js",
+      "_ObsidianEmblemSvg-Dw_JkNFj.js"
     ]
   },
   "resources/js/Pages/Lobby.jsx": {
-    "file": "assets/Lobby-Sk7R0YlJ.js",
+    "file": "assets/Lobby-Cy8nJyys.js",
     "name": "Lobby",
     "src": "resources/js/Pages/Lobby.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-2km6TrZb.js",
-      "_search-CItOMOFH.js",
-      "_ObsidianEmblemSvg-DKz0pAqP.js"
+      "_MainLayout-CLzIYnLz.js",
+      "_search-D3xU4htv.js",
+      "_ObsidianEmblemSvg-Dw_JkNFj.js"
     ]
   },
   "resources/js/Pages/Static/FairPlay.jsx": {
-    "file": "assets/FairPlay-Bv9Og1Qs.js",
+    "file": "assets/FairPlay-B_8HoPK_.js",
     "name": "FairPlay",
     "src": "resources/js/Pages/Static/FairPlay.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-2km6TrZb.js",
-      "_LegalLayout-BvD7c7UJ.js"
+      "_MainLayout-CLzIYnLz.js",
+      "_LegalLayout-Czf_2nA8.js"
     ]
   },
   "resources/js/Pages/Static/KycAml.jsx": {
-    "file": "assets/KycAml-CVVWV7Ll.js",
+    "file": "assets/KycAml-Bmeve6s-.js",
     "name": "KycAml",
     "src": "resources/js/Pages/Static/KycAml.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-2km6TrZb.js",
-      "_LegalLayout-BvD7c7UJ.js"
+      "_MainLayout-CLzIYnLz.js",
+      "_LegalLayout-Czf_2nA8.js"
     ]
   },
   "resources/js/Pages/Static/Privacy.jsx": {
-    "file": "assets/Privacy-BBRDZFfo.js",
+    "file": "assets/Privacy-DQnBSVmE.js",
     "name": "Privacy",
     "src": "resources/js/Pages/Static/Privacy.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-2km6TrZb.js",
-      "_LegalLayout-BvD7c7UJ.js"
+      "_MainLayout-CLzIYnLz.js",
+      "_LegalLayout-Czf_2nA8.js"
     ]
   },
   "resources/js/Pages/Static/ResponsibleGaming.jsx": {
-    "file": "assets/ResponsibleGaming-CWOlwxrB.js",
+    "file": "assets/ResponsibleGaming-SI1CW1gE.js",
     "name": "ResponsibleGaming",
     "src": "resources/js/Pages/Static/ResponsibleGaming.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-2km6TrZb.js",
-      "_LegalLayout-BvD7c7UJ.js"
+      "_MainLayout-CLzIYnLz.js",
+      "_LegalLayout-Czf_2nA8.js"
     ]
   },
   "resources/js/Pages/Static/Terms.jsx": {
-    "file": "assets/Terms-TRs_u9BM.js",
+    "file": "assets/Terms-aYWv91hL.js",
     "name": "Terms",
     "src": "resources/js/Pages/Static/Terms.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-2km6TrZb.js",
-      "_LegalLayout-BvD7c7UJ.js"
+      "_MainLayout-CLzIYnLz.js",
+      "_LegalLayout-Czf_2nA8.js"
     ]
   },
   "resources/js/Pages/Store.jsx": {
-    "file": "assets/Store-BvwHKXj-.js",
+    "file": "assets/Store-DNLGzYb4.js",
     "name": "Store",
     "src": "resources/js/Pages/Store.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-2km6TrZb.js"
+      "_MainLayout-CLzIYnLz.js"
     ]
   },
   "resources/js/app.jsx": {
-    "file": "assets/app-BFuf_E2J.js",
+    "file": "assets/app-BW_5M2lD.js",
     "name": "app",
     "src": "resources/js/app.jsx",
     "isEntry": true,
@@ -175,7 +175,7 @@
       "resources/js/Pages/Store.jsx"
     ],
     "css": [
-      "assets/app-B0rgJqzO.css"
+      "assets/app-DpaJqs6-.css"
     ]
   }
 }

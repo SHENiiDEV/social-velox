@@ -114,7 +114,7 @@ export default function AuthModal({ isOpen, onClose, initialTab = 'login' }) {
                 : 'text-[#B1BAD3] hover:text-white hover:bg-[#213743]/50'
             }`}
           >
-            Register (+100 SC Bonus)
+            Register
           </button>
         </div>
 
@@ -451,7 +451,7 @@ export default function AuthModal({ isOpen, onClose, initialTab = 'login' }) {
                 className="w-full py-3 bg-[#1475E1] hover:bg-blue-600 disabled:opacity-50 text-white font-bold text-sm rounded-lg shadow-lg shadow-blue-500/20 transition-all flex items-center justify-center gap-2"
               >
                 <Sparkles className="w-4 h-4 text-yellow-400" />
-                <span>Create Account (+100 SC Free Bonus)</span>
+                <span>Create Account</span>
               </button>
             </form>
           )}

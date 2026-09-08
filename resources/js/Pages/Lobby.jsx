@@ -73,36 +73,6 @@ export default function Lobby({ games, featuredGames = [], liveWins = [], curren
                 Register
               </button>
             </div>
-
-            {/* Social Sign Up Options */}
-            <div className="space-y-2 pt-2">
-              <p className="text-[10px] font-black text-[#B1BAD3] uppercase tracking-widest drop-shadow-md">
-                OR SIGN UP WITH
-              </p>
-              <div className="flex items-center justify-center gap-3">
-                <button
-                  onClick={() => setIsAuthModalOpen(true)}
-                  className="w-14 h-9 bg-black/40 hover:bg-black/60 backdrop-blur-md rounded-xl flex items-center justify-center font-black text-white text-xs border border-white/10 transition-all hover:scale-105 shadow-md"
-                  title="Sign up with Google"
-                >
-                  <span className="text-red-400 font-serif font-black text-base">G</span>
-                </button>
-                <button
-                  onClick={() => setIsAuthModalOpen(true)}
-                  className="w-14 h-9 bg-[#1877F2]/30 hover:bg-[#1877F2]/50 backdrop-blur-md text-[#1877F2] rounded-xl flex items-center justify-center font-black text-base border border-[#1877F2]/40 transition-all hover:scale-105 shadow-md"
-                  title="Sign up with Facebook"
-                >
-                  f
-                </button>
-                <button
-                  onClick={() => setIsAuthModalOpen(true)}
-                  className="w-14 h-9 bg-emerald-500/20 hover:bg-emerald-500/40 backdrop-blur-md text-emerald-400 rounded-xl flex items-center justify-center font-black text-sm border border-emerald-500/40 transition-all hover:scale-105 shadow-md"
-                  title="Sign up with Kick"
-                >
-                  K
-                </button>
-              </div>
-            </div>
           </div>
         </div>
 

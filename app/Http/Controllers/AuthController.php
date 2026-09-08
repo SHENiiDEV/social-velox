@@ -99,7 +99,7 @@ class AuthController extends Controller
             Log::warning('Failed sending WelcomeRegistrationMail: '.$e->getMessage());
         }
 
-        return redirect()->back()->with('success', 'Account created successfully! Welcome bonus 100.00 SC added.');
+        return redirect()->back()->with('success', 'Account created successfully!');
     }
 
     /**

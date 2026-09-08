@@ -26,8 +26,8 @@
             <h1>VELOX PLAY</h1>
         </div>
 
-        <h2>Welcome to the Realm, {{ $user->name }}! 💎</h2>
-        <p>Your account has been successfully created. We've credited your social gaming wallet with <strong>+100.00 SC (Standard Coins)</strong> free welcome bonus to launch your session!</p>
+        <h2>Welcome to Velox Play, {{ $user->name }}! 💎</h2>
+        <p>Your account has been successfully created and verified.</p>
 
         <div class="info-box">
             <div class="info-row">
@@ -39,12 +39,12 @@
                 <span class="info-value">{{ $user->email }}</span>
             </div>
             <div class="info-row">
-                <span class="info-label">Starting SC Balance:</span>
+                <span class="info-label">Account Balance:</span>
                 <span class="info-value" style="color: #34D399;">{{ number_format($user->game_balance, 2) }} SC</span>
             </div>
         </div>
 
-        <p>Explore over 2,000+ certified slots, Pragmatic & Hacksaw titles, live community chat, and provably fair originals!</p>
+        <p>Explore over 2,000+ certified slots, Pragmatic & Hacksaw titles, and provably fair games!</p>
 
         <a href="{{ url('/') }}" class="btn">LAUNCH LOBBY</a>
 
