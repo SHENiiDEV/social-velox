@@ -1,28 +1,35 @@
 {
-  "_LegalLayout-Dv7uUow8.js": {
-    "file": "assets/LegalLayout-Dv7uUow8.js",
+  "_LegalLayout-DD9kN9Ei.js": {
+    "file": "assets/LegalLayout-DD9kN9Ei.js",
     "name": "LegalLayout",
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-BIq66pWO.js"
+      "_MainLayout-DHS-VHuY.js"
     ]
   },
-  "_MainLayout-BIq66pWO.js": {
-    "file": "assets/MainLayout-BIq66pWO.js",
+  "_MainLayout-DHS-VHuY.js": {
+    "file": "assets/MainLayout-DHS-VHuY.js",
     "name": "MainLayout",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_search-ClzEi5wV.js": {
-    "file": "assets/search-ClzEi5wV.js",
+  "_ObsidianEmblemSvg-BGkZrB2c.js": {
+    "file": "assets/ObsidianEmblemSvg-BGkZrB2c.js",
+    "name": "ObsidianEmblemSvg",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "_search-B17Awasn.js": {
+    "file": "assets/search-B17Awasn.js",
     "name": "search",
     "imports": [
-      "_MainLayout-BIq66pWO.js"
+      "_MainLayout-DHS-VHuY.js"
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-CUzIS2Ij.css",
+    "file": "assets/app-BY2yvSON.css",
     "name": "app",
     "names": [
       "app.css"
@@ -31,124 +38,126 @@
     "isEntry": true
   },
   "resources/js/Pages/Admin/Dashboard.jsx": {
-    "file": "assets/Dashboard-KVm1OCsn.js",
+    "file": "assets/Dashboard-CRJNW6GS.js",
     "name": "Dashboard",
     "src": "resources/js/Pages/Admin/Dashboard.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-BIq66pWO.js"
+      "_MainLayout-DHS-VHuY.js"
     ]
   },
   "resources/js/Pages/Admin/Users.jsx": {
-    "file": "assets/Users-0-aq99_F.js",
+    "file": "assets/Users-qAWb7eYP.js",
     "name": "Users",
     "src": "resources/js/Pages/Admin/Users.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-BIq66pWO.js",
-      "_search-ClzEi5wV.js"
+      "_MainLayout-DHS-VHuY.js",
+      "_search-B17Awasn.js"
     ]
   },
   "resources/js/Pages/Auth/ResetPassword.jsx": {
-    "file": "assets/ResetPassword-oLvMVVoP.js",
+    "file": "assets/ResetPassword-KfRYbCwy.js",
     "name": "ResetPassword",
     "src": "resources/js/Pages/Auth/ResetPassword.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-BIq66pWO.js"
+      "_MainLayout-DHS-VHuY.js"
     ]
   },
   "resources/js/Pages/GamePlayer.jsx": {
-    "file": "assets/GamePlayer-Bm1bWlwF.js",
+    "file": "assets/GamePlayer-LVuPHFWe.js",
     "name": "GamePlayer",
     "src": "resources/js/Pages/GamePlayer.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-BIq66pWO.js"
+      "_MainLayout-DHS-VHuY.js",
+      "_ObsidianEmblemSvg-BGkZrB2c.js"
     ]
   },
   "resources/js/Pages/Lobby.jsx": {
-    "file": "assets/Lobby-CyRQamFC.js",
+    "file": "assets/Lobby-D8QGbWVX.js",
     "name": "Lobby",
     "src": "resources/js/Pages/Lobby.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-BIq66pWO.js",
-      "_search-ClzEi5wV.js"
+      "_MainLayout-DHS-VHuY.js",
+      "_search-B17Awasn.js",
+      "_ObsidianEmblemSvg-BGkZrB2c.js"
     ]
   },
   "resources/js/Pages/Static/FairPlay.jsx": {
-    "file": "assets/FairPlay-C6UQUuWC.js",
+    "file": "assets/FairPlay-DqaBt3v-.js",
     "name": "FairPlay",
     "src": "resources/js/Pages/Static/FairPlay.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-BIq66pWO.js",
-      "_LegalLayout-Dv7uUow8.js"
+      "_MainLayout-DHS-VHuY.js",
+      "_LegalLayout-DD9kN9Ei.js"
     ]
   },
   "resources/js/Pages/Static/KycAml.jsx": {
-    "file": "assets/KycAml-Q9rqQNzQ.js",
+    "file": "assets/KycAml-CKR5FaJt.js",
     "name": "KycAml",
     "src": "resources/js/Pages/Static/KycAml.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-BIq66pWO.js",
-      "_LegalLayout-Dv7uUow8.js"
+      "_MainLayout-DHS-VHuY.js",
+      "_LegalLayout-DD9kN9Ei.js"
     ]
   },
   "resources/js/Pages/Static/Privacy.jsx": {
-    "file": "assets/Privacy-FwfA3ebN.js",
+    "file": "assets/Privacy-BF8ME2lc.js",
     "name": "Privacy",
     "src": "resources/js/Pages/Static/Privacy.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-BIq66pWO.js",
-      "_LegalLayout-Dv7uUow8.js"
+      "_MainLayout-DHS-VHuY.js",
+      "_LegalLayout-DD9kN9Ei.js"
     ]
   },
   "resources/js/Pages/Static/ResponsibleGaming.jsx": {
-    "file": "assets/ResponsibleGaming-oJg4ILCW.js",
+    "file": "assets/ResponsibleGaming-CzIn-9NL.js",
     "name": "ResponsibleGaming",
     "src": "resources/js/Pages/Static/ResponsibleGaming.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-BIq66pWO.js",
-      "_LegalLayout-Dv7uUow8.js"
+      "_MainLayout-DHS-VHuY.js",
+      "_LegalLayout-DD9kN9Ei.js"
     ]
   },
   "resources/js/Pages/Static/Terms.jsx": {
-    "file": "assets/Terms-CT7rTViF.js",
+    "file": "assets/Terms-BUQMMXp2.js",
     "name": "Terms",
     "src": "resources/js/Pages/Static/Terms.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-BIq66pWO.js",
-      "_LegalLayout-Dv7uUow8.js"
+      "_MainLayout-DHS-VHuY.js",
+      "_LegalLayout-DD9kN9Ei.js"
     ]
   },
   "resources/js/Pages/Store.jsx": {
-    "file": "assets/Store-DlC6-_cH.js",
+    "file": "assets/Store-CO8wR27m.js",
     "name": "Store",
     "src": "resources/js/Pages/Store.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-BIq66pWO.js"
+      "_MainLayout-DHS-VHuY.js"
     ]
   },
   "resources/js/app.jsx": {
-    "file": "assets/app-Dsz01NJ3.js",
+    "file": "assets/app-iRj5GK34.js",
     "name": "app",
     "src": "resources/js/app.jsx",
     "isEntry": true,
@@ -166,7 +175,7 @@
       "resources/js/Pages/Store.jsx"
     ],
     "css": [
-      "assets/app-CUzIS2Ij.css"
+      "assets/app-BY2yvSON.css"
     ]
   }
 }

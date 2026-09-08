@@ -2,42 +2,32 @@ import React, { useState } from 'react';
 import { usePage } from '@inertiajs/react';
 import Header from '../Components/Header';
 import LeftSidebar from '../Components/LeftSidebar';
-import RightChatSidebar from '../Components/RightChatSidebar';
-import { ShieldAlert, AlertTriangle } from 'lucide-react';
+import { ShieldAlert } from 'lucide-react';
 
-export default function MainLayout({ children, currentCategory = 'all', liveWins = [] }) {
+export default function MainLayout({ children, currentCategory = 'all' }) {
   const { auth } = usePage().props;
   const [leftSidebarOpen, setLeftSidebarOpen] = useState(true);
-  const [rightChatOpen, setRightChatOpen] = useState(true);
 
   return (
     <div className="min-h-[100dvh] bg-[#0F212E] text-white flex flex-col font-sans selection:bg-[#1475E1] selection:text-white">
       {/* Top Header */}
       <Header
         onToggleLeftSidebar={() => setLeftSidebarOpen(!leftSidebarOpen)}
-        onToggleRightChat={() => setRightChatOpen(!rightChatOpen)}
       />
 
-      {/* Main 3-Column Layout Container */}
+      {/* Main Layout Container */}
       <div className="flex-1 flex relative overflow-x-hidden">
         {/* Left Navigation Sidebar */}
         <LeftSidebar isOpen={leftSidebarOpen} currentCategory={currentCategory} />
 
-        {/* Center Main Content Region */}
+        {/* Center Main Content Region (Full Width) */}
         <main
           className={`flex-1 transition-all duration-300 min-w-0 p-4 lg:p-6 ${
             leftSidebarOpen ? 'lg:ml-64' : 'lg:ml-16'
-          } ${rightChatOpen ? 'xl:mr-80' : 'mr-0'}`}
+          }`}
         >
           {children}
         </main>
-
-        {/* Right Community Live Chat & Wins Sidebar */}
-        <RightChatSidebar
-          isOpen={rightChatOpen}
-          onClose={() => setRightChatOpen(false)}
-          liveWins={liveWins}
-        />
       </div>
 
       {/* Full Screen Ban Enforcement Modal */}

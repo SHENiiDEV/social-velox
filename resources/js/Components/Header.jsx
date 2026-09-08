@@ -2,26 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { Link, usePage } from '@inertiajs/react';
 import { 
   Coins, 
-  Wallet, 
   PlusCircle, 
-  User, 
   LogOut, 
   ShieldCheck, 
   Menu, 
-  MessageSquare,
-  Gift,
   RefreshCw,
-  Sparkles,
-  Gamepad2,
-  Trophy
+  Sparkles
 } from 'lucide-react';
-import VipProgressBadge from './VipProgressBadge';
 import StoreModal from './StoreModal';
 import AuthModal from './AuthModal';
 import ObsidianLogo from './ObsidianLogo';
 
-export default function Header({ onToggleLeftSidebar, onToggleRightChat }) {
-  const { auth, appName } = usePage().props;
+export default function Header({ onToggleLeftSidebar }) {
+  const { auth } = usePage().props;
   const [balance, setBalance] = useState(auth.user ? auth.user.game_balance : 0);
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [isStoreOpen, setIsStoreOpen] = useState(false);
@@ -29,7 +22,6 @@ export default function Header({ onToggleLeftSidebar, onToggleRightChat }) {
   const [authTab, setAuthTab] = useState('login');
   const [userDropdown, setUserDropdown] = useState(false);
   const [bonusClaimMsg, setBonusClaimMsg] = useState(null);
-  const [headerTab, setHeaderTab] = useState('casino'); // 'casino' or 'sports'
 
   // Poll balance every 3 seconds & window focus
   useEffect(() => {
@@ -77,29 +69,6 @@ export default function Header({ onToggleLeftSidebar, onToggleRightChat }) {
     }
   };
 
-  const handleClaimDailyBonus = async () => {
-    try {
-      const res = await fetch('/api/bonus/daily', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '',
-        },
-      });
-      const data = await res.json();
-      if (data.success) {
-        setBalance(data.new_balance);
-        setBonusClaimMsg(data.message);
-        setTimeout(() => setBonusClaimMsg(null), 3500);
-      } else {
-        alert(data.message || 'Daily bonus unavailable.');
-      }
-    } catch (e) {
-      alert('Failed to claim bonus.');
-    }
-  };
-
   return (
     <>
       <header className="sticky top-0 z-40 h-16 bg-[#0F212E]/95 backdrop-blur-md border-b border-[#213743] px-3 sm:px-4 flex items-center justify-between shadow-md">
@@ -118,7 +87,7 @@ export default function Header({ onToggleLeftSidebar, onToggleRightChat }) {
           </Link>
         </div>
 
-        {/* Right Section: Balance / Auth Buttons & Chat Toggle */}
+        {/* Right Section: Balance / Auth Buttons */}
         <div className="flex items-center gap-2 sm:gap-3">
           {auth.user ? (
             <div className="flex items-center gap-2">
@@ -214,16 +183,6 @@ export default function Header({ onToggleLeftSidebar, onToggleRightChat }) {
               </button>
             </div>
           )}
-
-          {/* Right Sidebar / Chat Toggle Button */}
-          <button
-            onClick={onToggleRightChat}
-            className="p-2 text-[#B1BAD3] hover:text-white rounded-xl hover:bg-[#213743] transition-colors relative"
-            title="Toggle Right Sidebar"
-          >
-            <MessageSquare className="w-5 h-5 text-[#1475E1]" />
-            <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-          </button>
         </div>
       </header>
 
