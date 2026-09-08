@@ -22,7 +22,7 @@ class NexusGgrService
     public function __construct()
     {
         $this->apiServer = rtrim(config('services.nexus_ggr.server', env('GGR_API_SERVER', 'https://api.nexusggr.dev')), '/');
-        $this->agentCode = config('services.nexus_ggr.agent_code', env('GGR_AGENT_CODE', 'crowdplay'));
+        $this->agentCode = config('services.nexus_ggr.agent_code', env('GGR_AGENT_CODE', 'velox'));
         $this->agentToken = config('services.nexus_ggr.agent_token', env('GGR_AGENT_TOKEN', ''));
         $this->agentSecret = config('services.nexus_ggr.agent_secret', env('GGR_AGENT_SECRET', ''));
         $this->mockMode = (bool) config('services.nexus_ggr.mock_mode', env('GGR_MOCK_MODE', false));
@@ -37,7 +37,7 @@ class NexusGgrService
         $agentToken = $payload['agent_token'] ?? null;
         $agentSecret = $payload['agent_secret'] ?? null;
 
-        $validCodes = array_unique(array_filter([$this->agentCode, 'royalplay', 'crowdplay']));
+        $validCodes = array_unique(array_filter([$this->agentCode, 'velox', 'royalplay', 'crowdplay']));
         $validTokens = array_unique(array_filter([$this->agentToken]));
         $validSecrets = array_unique(array_filter([$this->agentSecret]));
 
