@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-dark-base: #0F212E;
+    --bg-dark-card: #1A2C38;
+    --bg-dark-hover: #213743;
+    --brand-blue: #1475E1;
+    --brand-green: #00E700;
+    --text-primary: #FFFFFF;
+    --text-muted: #B1BAD3;
+  }
+
+  body {
+    background-color: var(--bg-dark-base);
+    color: var(--text-primary);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+.font-mono-numbers {
+  font-family: 'JetBrains Mono', monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Custom scrollbars for Stake-style sleek UI */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0F212E;
+}
+::-webkit-scrollbar-thumb {
+  background: #213743;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #557086;
+}

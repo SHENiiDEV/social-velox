@@ -1,0 +1,172 @@
+{
+  "_LegalLayout-Dv7uUow8.js": {
+    "file": "assets/LegalLayout-Dv7uUow8.js",
+    "name": "LegalLayout",
+    "imports": [
+      "resources/js/app.jsx",
+      "_MainLayout-BIq66pWO.js"
+    ]
+  },
+  "_MainLayout-BIq66pWO.js": {
+    "file": "assets/MainLayout-BIq66pWO.js",
+    "name": "MainLayout",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "_search-ClzEi5wV.js": {
+    "file": "assets/search-ClzEi5wV.js",
+    "name": "search",
+    "imports": [
+      "_MainLayout-BIq66pWO.js"
+    ]
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-CUzIS2Ij.css",
+    "name": "app",
+    "names": [
+      "app.css"
+    ],
+    "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/js/Pages/Admin/Dashboard.jsx": {
+    "file": "assets/Dashboard-KVm1OCsn.js",
+    "name": "Dashboard",
+    "src": "resources/js/Pages/Admin/Dashboard.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_MainLayout-BIq66pWO.js"
+    ]
+  },
+  "resources/js/Pages/Admin/Users.jsx": {
+    "file": "assets/Users-0-aq99_F.js",
+    "name": "Users",
+    "src": "resources/js/Pages/Admin/Users.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_MainLayout-BIq66pWO.js",
+      "_search-ClzEi5wV.js"
+    ]
+  },
+  "resources/js/Pages/Auth/ResetPassword.jsx": {
+    "file": "assets/ResetPassword-oLvMVVoP.js",
+    "name": "ResetPassword",
+    "src": "resources/js/Pages/Auth/ResetPassword.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_MainLayout-BIq66pWO.js"
+    ]
+  },
+  "resources/js/Pages/GamePlayer.jsx": {
+    "file": "assets/GamePlayer-Bm1bWlwF.js",
+    "name": "GamePlayer",
+    "src": "resources/js/Pages/GamePlayer.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_MainLayout-BIq66pWO.js"
+    ]
+  },
+  "resources/js/Pages/Lobby.jsx": {
+    "file": "assets/Lobby-CyRQamFC.js",
+    "name": "Lobby",
+    "src": "resources/js/Pages/Lobby.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_MainLayout-BIq66pWO.js",
+      "_search-ClzEi5wV.js"
+    ]
+  },
+  "resources/js/Pages/Static/FairPlay.jsx": {
+    "file": "assets/FairPlay-C6UQUuWC.js",
+    "name": "FairPlay",
+    "src": "resources/js/Pages/Static/FairPlay.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_MainLayout-BIq66pWO.js",
+      "_LegalLayout-Dv7uUow8.js"
+    ]
+  },
+  "resources/js/Pages/Static/KycAml.jsx": {
+    "file": "assets/KycAml-Q9rqQNzQ.js",
+    "name": "KycAml",
+    "src": "resources/js/Pages/Static/KycAml.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_MainLayout-BIq66pWO.js",
+      "_LegalLayout-Dv7uUow8.js"
+    ]
+  },
+  "resources/js/Pages/Static/Privacy.jsx": {
+    "file": "assets/Privacy-FwfA3ebN.js",
+    "name": "Privacy",
+    "src": "resources/js/Pages/Static/Privacy.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_MainLayout-BIq66pWO.js",
+      "_LegalLayout-Dv7uUow8.js"
+    ]
+  },
+  "resources/js/Pages/Static/ResponsibleGaming.jsx": {
+    "file": "assets/ResponsibleGaming-oJg4ILCW.js",
+    "name": "ResponsibleGaming",
+    "src": "resources/js/Pages/Static/ResponsibleGaming.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_MainLayout-BIq66pWO.js",
+      "_LegalLayout-Dv7uUow8.js"
+    ]
+  },
+  "resources/js/Pages/Static/Terms.jsx": {
+    "file": "assets/Terms-CT7rTViF.js",
+    "name": "Terms",
+    "src": "resources/js/Pages/Static/Terms.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_MainLayout-BIq66pWO.js",
+      "_LegalLayout-Dv7uUow8.js"
+    ]
+  },
+  "resources/js/Pages/Store.jsx": {
+    "file": "assets/Store-DlC6-_cH.js",
+    "name": "Store",
+    "src": "resources/js/Pages/Store.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_MainLayout-BIq66pWO.js"
+    ]
+  },
+  "resources/js/app.jsx": {
+    "file": "assets/app-Dsz01NJ3.js",
+    "name": "app",
+    "src": "resources/js/app.jsx",
+    "isEntry": true,
+    "dynamicImports": [
+      "resources/js/Pages/Admin/Dashboard.jsx",
+      "resources/js/Pages/Admin/Users.jsx",
+      "resources/js/Pages/Auth/ResetPassword.jsx",
+      "resources/js/Pages/GamePlayer.jsx",
+      "resources/js/Pages/Lobby.jsx",
+      "resources/js/Pages/Static/FairPlay.jsx",
+      "resources/js/Pages/Static/KycAml.jsx",
+      "resources/js/Pages/Static/Privacy.jsx",
+      "resources/js/Pages/Static/ResponsibleGaming.jsx",
+      "resources/js/Pages/Static/Terms.jsx",
+      "resources/js/Pages/Store.jsx"
+    ],
+    "css": [
+      "assets/app-CUzIS2Ij.css"
+    ]
+  }
+}
