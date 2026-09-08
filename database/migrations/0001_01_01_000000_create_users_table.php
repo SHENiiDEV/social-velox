@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('user_code')->unique()->index();
-            $table->decimal('game_balance', 12, 2)->default(100.00);
+            $table->decimal('game_balance', 12, 2)->default(0.00);
             $table->integer('rtp')->default(95);
             $table->integer('vip_level')->default(1);
             $table->bigInteger('vip_points')->default(0);

@@ -87,7 +87,7 @@ class AuthController extends Controller
             'country' => $request->country,
             'postal_code' => $request->postal_code,
             'agreed_to_terms' => true,
-            'game_balance' => 100.00, // Welcome bonus balance
+            'game_balance' => 0.00,
         ]);
 
         Auth::login($user);
