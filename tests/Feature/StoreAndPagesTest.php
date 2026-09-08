@@ -75,4 +75,20 @@ class StoreAndPagesTest extends TestCase
         $user->refresh();
         $this->assertEquals(100, $user->vip_points);
     }
+
+    public function test_support_form_submission(): void
+    {
+        $response = $this->postJson('/api/support/send', [
+            'name' => 'John Doe',
+            'email' => 'john@example.com',
+            'category' => 'store_deposit',
+            'subject' => 'Help with SC balance',
+            'message' => 'Hello, I have a question regarding my deposit.',
+        ]);
+
+        $response->assertStatus(200)
+            ->assertJson([
+                'success' => true,
+            ]);
+    }
 }

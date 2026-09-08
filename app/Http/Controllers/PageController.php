@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\BonusClaim;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -145,14 +147,6 @@ class PageController extends Controller
     }
 
     /**
-     * Forum Page.
-     */
-    public function forum(Request $request): Response
-    {
-        return Inertia::render('Forum');
-    }
-
-    /**
      * Sponsorships Page.
      */
     public function sponsorships(Request $request): Response
@@ -166,5 +160,29 @@ class PageController extends Controller
     public function support(Request $request): Response
     {
         return Inertia::render('Support');
+    }
+
+    /**
+     * Submit Support Request Form.
+     */
+    public function submitSupport(Request $request): JsonResponse
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:100',
+            'email' => 'required|email|max:150',
+            'category' => 'required|string|max:50',
+            'subject' => 'required|string|max:200',
+            'message' => 'required|string|min:10|max:2000',
+        ]);
+
+        $ticketId = 'TICKET-'.strtoupper(str()->random(8));
+
+        Log::info("Support Request Submitted [{$ticketId}]: ".json_encode($validated));
+
+        return response()->json([
+            'success' => true,
+            'ticket_id' => $ticketId,
+            'message' => "Support request submitted successfully! Your reference ticket is {$ticketId}.",
+        ]);
     }
 }
