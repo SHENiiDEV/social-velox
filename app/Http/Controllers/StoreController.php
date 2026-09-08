@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\DepositSuccessfulMail;
 use App\Models\BonusClaim;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -17,12 +20,12 @@ class StoreController extends Controller
     public function index(Request $request): Response
     {
         $packages = [
-            ['eur' => 10.00, 'bonus_percent' => 5, 'base_sc' => 5.00, 'bonus_sc' => 0.25, 'total_sc' => 5.25, 'vip_points' => 1000],
-            ['eur' => 50.00, 'bonus_percent' => 10, 'base_sc' => 25.00, 'bonus_sc' => 2.50, 'total_sc' => 27.50, 'vip_points' => 5000],
-            ['eur' => 100.00, 'bonus_percent' => 15, 'base_sc' => 50.00, 'bonus_sc' => 7.50, 'total_sc' => 57.50, 'vip_points' => 10000],
-            ['eur' => 250.00, 'bonus_percent' => 20, 'base_sc' => 125.00, 'bonus_sc' => 25.00, 'total_sc' => 150.00, 'vip_points' => 25000],
-            ['eur' => 500.00, 'bonus_percent' => 25, 'base_sc' => 250.00, 'bonus_sc' => 62.50, 'total_sc' => 312.50, 'vip_points' => 50000],
-            ['eur' => 1000.00, 'bonus_percent' => 30, 'base_sc' => 500.00, 'bonus_sc' => 150.00, 'total_sc' => 650.00, 'vip_points' => 100000],
+            ['eur' => 10.00, 'bonus_percent' => 5, 'base_sc' => 5.00, 'bonus_sc' => 0.25, 'total_sc' => 5.25, 'vip_points' => 10],
+            ['eur' => 50.00, 'bonus_percent' => 10, 'base_sc' => 25.00, 'bonus_sc' => 2.50, 'total_sc' => 27.50, 'vip_points' => 50],
+            ['eur' => 100.00, 'bonus_percent' => 15, 'base_sc' => 50.00, 'bonus_sc' => 7.50, 'total_sc' => 57.50, 'vip_points' => 100],
+            ['eur' => 250.00, 'bonus_percent' => 20, 'base_sc' => 125.00, 'bonus_sc' => 25.00, 'total_sc' => 150.00, 'vip_points' => 250],
+            ['eur' => 500.00, 'bonus_percent' => 25, 'base_sc' => 250.00, 'bonus_sc' => 62.50, 'total_sc' => 312.50, 'vip_points' => 500],
+            ['eur' => 1000.00, 'bonus_percent' => 30, 'base_sc' => 500.00, 'bonus_sc' => 150.00, 'total_sc' => 650.00, 'vip_points' => 1000],
         ];
 
         return Inertia::render('Store', [
@@ -36,7 +39,7 @@ class StoreController extends Controller
     public function buy(Request $request): JsonResponse
     {
         $user = $request->user();
-        if (!$user) {
+        if (! $user) {
             return response()->json(['success' => false, 'message' => 'Unauthenticated'], 401);
         }
 
@@ -44,6 +47,9 @@ class StoreController extends Controller
         if ($eur < 5.00) {
             return response()->json(['success' => false, 'message' => 'Minimum deposit is €5.00'], 400);
         }
+
+        $isPromo2x = (bool) $request->input('is_promo_2x_xp', false);
+        $xpMultiplier = $isPromo2x ? 2 : 1;
 
         // Calculate bonus percentage
         $bonusPercent = 5;
@@ -62,7 +68,7 @@ class StoreController extends Controller
         $baseSc = $eur * 0.50; // 1 EUR = 0.50 SC
         $bonusSc = $baseSc * ($bonusPercent / 100);
         $totalSc = round($baseSc + $bonusSc, 2);
-        $vipPtsEarned = (int) ($eur * 100);
+        $vipPtsEarned = (int) ($eur * $xpMultiplier);
 
         // Update user
         $user->game_balance += $totalSc;
@@ -83,18 +89,19 @@ class StoreController extends Controller
                 'base_sc' => $baseSc,
                 'bonus_sc' => $bonusSc,
                 'vip_points' => $vipPtsEarned,
+                'is_promo_2x_xp' => $isPromo2x,
             ],
             'created_at' => now(),
         ]);
 
         // Send financial deposit receipt email
-        $orderId = 'ORD-' . strtoupper(str()->random(10));
+        $orderId = 'ORD-'.strtoupper(str()->random(10));
         try {
-            \Illuminate\Support\Facades\Mail::to($user->email)->send(
-                new \App\Mail\DepositSuccessfulMail($user, $orderId, $eur, $totalSc, (float) $user->game_balance)
+            Mail::to($user->email)->send(
+                new DepositSuccessfulMail($user, $orderId, $eur, $totalSc, (float) $user->game_balance)
             );
         } catch (\Throwable $e) {
-            \Illuminate\Support\Facades\Log::warning('Failed sending DepositSuccessfulMail: ' . $e->getMessage());
+            Log::warning('Failed sending DepositSuccessfulMail: '.$e->getMessage());
         }
 
         return response()->json([
@@ -103,17 +110,28 @@ class StoreController extends Controller
             'total_sc_received' => $totalSc,
             'vip_points_gained' => $vipPtsEarned,
             'vip_level' => $user->vip_level,
-            'message' => "Successfully purchased! Received {$totalSc} SC + {$vipPtsEarned} VIP points.",
+            'message' => "Successfully purchased! Received {$totalSc} SC + {$vipPtsEarned} VIP XP points.",
         ]);
     }
 
     public static function calculateVipLevel(int $vipPoints): int
     {
-        if ($vipPoints >= 25000) return 10; // Diamond Whale
-        if ($vipPoints >= 10000) return 8;  // Platinum
-        if ($vipPoints >= 5000) return 5;   // Gold
-        if ($vipPoints >= 2500) return 3;   // Silver
-        if ($vipPoints >= 1000) return 2;   // Bronze
+        if ($vipPoints >= 25000) {
+            return 10;
+        } // Diamond Whale
+        if ($vipPoints >= 10000) {
+            return 8;
+        }  // Platinum
+        if ($vipPoints >= 5000) {
+            return 5;
+        }   // Gold
+        if ($vipPoints >= 2500) {
+            return 3;
+        }   // Silver
+        if ($vipPoints >= 1000) {
+            return 2;
+        }   // Bronze
+
         return 1;
     }
 }

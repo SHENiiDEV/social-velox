@@ -6,8 +6,11 @@ use App\Http\Controllers\BonusController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\GgrGoldApiController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\StaticPageController;
 use App\Http\Controllers\StoreController;
+use App\Http\Middleware\AdminMiddleware;
+use Illuminate\Foundation\Http\Middleware\ValidateCsrfToken;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,9 +18,9 @@ use Illuminate\Support\Facades\Route;
 | NexusGGR Seamless Wallet Webhook Callback Routes (/gold_api)
 |--------------------------------------------------------------------------
 */
-Route::post('/gold_api', [GgrGoldApiController::class, 'handle'])->withoutMiddleware([\Illuminate\Foundation\Http\Middleware\ValidateCsrfToken::class]);
-Route::post('//gold_api', [GgrGoldApiController::class, 'handle'])->withoutMiddleware([\Illuminate\Foundation\Http\Middleware\ValidateCsrfToken::class]);
-Route::post('/gold_api/{any}', [GgrGoldApiController::class, 'handle'])->withoutMiddleware([\Illuminate\Foundation\Http\Middleware\ValidateCsrfToken::class])->where('any', '.*');
+Route::post('/gold_api', [GgrGoldApiController::class, 'handle'])->withoutMiddleware([ValidateCsrfToken::class]);
+Route::post('//gold_api', [GgrGoldApiController::class, 'handle'])->withoutMiddleware([ValidateCsrfToken::class]);
+Route::post('/gold_api/{any}', [GgrGoldApiController::class, 'handle'])->withoutMiddleware([ValidateCsrfToken::class])->where('any', '.*');
 
 /*
 |--------------------------------------------------------------------------
@@ -58,10 +61,15 @@ Route::prefix('api')->group(function () {
 
 /*
 |--------------------------------------------------------------------------
-| Store Route
+| Store & Community Feature Routes
 |--------------------------------------------------------------------------
 */
 Route::get('/store', [StoreController::class, 'index'])->name('store');
+Route::get('/promotions', [PageController::class, 'promotions'])->name('promotions');
+Route::get('/challenges', [PageController::class, 'challenges'])->name('challenges');
+Route::get('/affiliate', [PageController::class, 'affiliate'])->name('affiliate');
+Route::get('/vip-club', [PageController::class, 'vipClub'])->name('vip-club');
+Route::get('/vip', [PageController::class, 'vipClub']);
 
 /*
 |--------------------------------------------------------------------------
@@ -92,7 +100,7 @@ Route::post('/reset-password', [AuthController::class, 'resetPassword'])->name('
 | Admin Suite Routes (/admin)
 |--------------------------------------------------------------------------
 */
-Route::prefix('admin')->middleware(['auth', \App\Http\Middleware\AdminMiddleware::class])->group(function () {
+Route::prefix('admin')->middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::get('/', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/users', [AdminController::class, 'users'])->name('admin.users');
     Route::post('/balance', [AdminController::class, 'adjustBalance'])->name('admin.balance');
