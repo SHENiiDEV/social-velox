@@ -229,19 +229,9 @@ class AuthController extends Controller
      */
     public function guest(Request $request): RedirectResponse
     {
-        $guestCode = User::generateUniqueUserCode(true);
-
-        $user = User::create([
-            'name' => 'Player_' . substr($guestCode, -4),
-            'email' => strtolower($guestCode) . '@obsidian-guest.local',
-            'password' => Hash::make(str()->random(16)),
-            'user_code' => $guestCode,
-            'game_balance' => 250.00,
+        return redirect()->back()->withErrors([
+            'email' => 'Guest accounts are disabled. Please register a full account.',
         ]);
-
-        Auth::login($user);
-
-        return redirect()->back()->with('success', 'Guest session started with 250.00 SC!');
     }
 
     /**

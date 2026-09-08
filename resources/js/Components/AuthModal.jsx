@@ -455,31 +455,6 @@ export default function AuthModal({ isOpen, onClose, initialTab = 'login' }) {
               </button>
             </form>
           )}
-
-          {/* Instant Guest Divider */}
-          <div className="relative py-2">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-[#213743]"></div>
-            </div>
-            <div className="relative flex justify-center text-xs">
-              <span className="px-3 bg-[#1A2C38] text-[#B1BAD3]">or Instant Play</span>
-            </div>
-          </div>
-
-          <button
-            onClick={handleGuestPlay}
-            disabled={loadingGuest}
-            className="w-full py-2.5 bg-[#213743] hover:bg-[#2c4757] text-white font-bold text-sm rounded-lg border border-slate-600/40 transition-all flex items-center justify-center gap-2"
-          >
-            {loadingGuest ? (
-              <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-            ) : (
-              <>
-                <Zap className="w-4 h-4 text-emerald-400" />
-                <span>Play Instantly as Guest (+250 SC)</span>
-              </>
-            )}
-          </button>
         </div>
       </div>
     </div>

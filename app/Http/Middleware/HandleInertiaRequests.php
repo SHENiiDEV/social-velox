@@ -37,6 +37,12 @@ class HandleInertiaRequests extends Middleware
     {
         $user = $request->user();
 
+        // Automatically invalidate guest sessions if guest mode is disabled
+        if ($user && str_starts_with($user->user_code, 'GUEST_')) {
+            \Illuminate\Support\Facades\Auth::logout();
+            $user = null;
+        }
+
         return array_merge(parent::share($request), [
             'auth' => [
                 'user' => $user ? [
