@@ -135,4 +135,36 @@ class PageController extends Controller
             'levels' => $levels,
         ]);
     }
+
+    /**
+     * Blog Page.
+     */
+    public function blog(Request $request): Response
+    {
+        return Inertia::render('Blog');
+    }
+
+    /**
+     * Forum Page.
+     */
+    public function forum(Request $request): Response
+    {
+        return Inertia::render('Forum');
+    }
+
+    /**
+     * Sponsorships Page.
+     */
+    public function sponsorships(Request $request): Response
+    {
+        return Inertia::render('Sponsorships');
+    }
+
+    /**
+     * Support Page.
+     */
+    public function support(Request $request): Response
+    {
+        return Inertia::render('Support');
+    }
 }

@@ -29,10 +29,14 @@ export default function LeftSidebar({ isOpen, currentCategory = 'all' }) {
     { name: 'Affiliate', icon: Users, link: '/affiliate' },
     { name: 'VIP Club', icon: Crown, link: '/vip-club' },
     { name: 'Store', icon: Coins, link: '/store' },
+    { name: 'Blog', icon: BookOpen, link: '/blog' },
+    { name: 'Forum', icon: MessageSquare, link: '/forum' },
   ];
 
   const secondaryNav = [
+    { name: 'Sponsorships', icon: Award, link: '/sponsorships' },
     { name: 'Responsible Gambling', icon: ShieldCheck, link: '/responsible-gaming' },
+    { name: 'Live Support', icon: Headphones, link: '/support' },
     { name: 'Fair Play', icon: ShieldCheck, link: '/fair-play' },
     { name: 'Terms of Service', icon: BookOpen, link: '/terms' },
     { name: 'Privacy Policy', icon: ShieldCheck, link: '/privacy' },

@@ -70,6 +70,10 @@ Route::get('/challenges', [PageController::class, 'challenges'])->name('challeng
 Route::get('/affiliate', [PageController::class, 'affiliate'])->name('affiliate');
 Route::get('/vip-club', [PageController::class, 'vipClub'])->name('vip-club');
 Route::get('/vip', [PageController::class, 'vipClub']);
+Route::get('/blog', [PageController::class, 'blog'])->name('blog');
+Route::get('/forum', [PageController::class, 'forum'])->name('forum');
+Route::get('/sponsorships', [PageController::class, 'sponsorships'])->name('sponsorships');
+Route::get('/support', [PageController::class, 'support'])->name('support');
 
 /*
 |--------------------------------------------------------------------------
