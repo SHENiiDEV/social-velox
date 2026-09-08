@@ -16,7 +16,8 @@ import {
   Gamepad2,
   Sparkles,
   Building2,
-  Mail
+  Mail,
+  Coins
 } from 'lucide-react';
 
 export default function LeftSidebar({ isOpen, currentCategory = 'all' }) {

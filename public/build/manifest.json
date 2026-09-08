@@ -1,52 +1,52 @@
 {
-  "_LegalLayout-CR8Y08oW.js": {
-    "file": "assets/LegalLayout-CR8Y08oW.js",
+  "_LegalLayout-CbwZd4Qv.js": {
+    "file": "assets/LegalLayout-CbwZd4Qv.js",
     "name": "LegalLayout",
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-DOUKX9mI.js"
+      "_MainLayout-BXSe9p7K.js"
     ]
   },
-  "_MainLayout-DOUKX9mI.js": {
-    "file": "assets/MainLayout-DOUKX9mI.js",
+  "_MainLayout-BXSe9p7K.js": {
+    "file": "assets/MainLayout-BXSe9p7K.js",
     "name": "MainLayout",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_ObsidianEmblemSvg-ByCfcSIX.js": {
-    "file": "assets/ObsidianEmblemSvg-ByCfcSIX.js",
+  "_ObsidianEmblemSvg-CPxW15Ps.js": {
+    "file": "assets/ObsidianEmblemSvg-CPxW15Ps.js",
     "name": "ObsidianEmblemSvg",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_arrow-right-DJDo6n1j.js": {
-    "file": "assets/arrow-right-DJDo6n1j.js",
+  "_arrow-right-Aw2-R0F8.js": {
+    "file": "assets/arrow-right-Aw2-R0F8.js",
     "name": "arrow-right",
     "imports": [
-      "_MainLayout-DOUKX9mI.js"
+      "_MainLayout-BXSe9p7K.js"
     ]
   },
-  "_clock-h9uH4zAt.js": {
-    "file": "assets/clock-h9uH4zAt.js",
+  "_clock-CECONJBs.js": {
+    "file": "assets/clock-CECONJBs.js",
     "name": "clock",
     "imports": [
-      "_MainLayout-DOUKX9mI.js"
+      "_MainLayout-BXSe9p7K.js"
     ]
   },
-  "_search-CZRoagH-.js": {
-    "file": "assets/search-CZRoagH-.js",
+  "_search-BXPiyeGE.js": {
+    "file": "assets/search-BXPiyeGE.js",
     "name": "search",
     "imports": [
-      "_MainLayout-DOUKX9mI.js"
+      "_MainLayout-BXSe9p7K.js"
     ]
   },
-  "_star-PtXxH_gQ.js": {
-    "file": "assets/star-PtXxH_gQ.js",
+  "_star-saaAPLzB.js": {
+    "file": "assets/star-saaAPLzB.js",
     "name": "star",
     "imports": [
-      "_MainLayout-DOUKX9mI.js"
+      "_MainLayout-BXSe9p7K.js"
     ]
   },
   "resources/css/app.css": {
@@ -59,196 +59,196 @@
     "isEntry": true
   },
   "resources/js/Pages/Admin/Dashboard.jsx": {
-    "file": "assets/Dashboard-CMDCaZN_.js",
+    "file": "assets/Dashboard-sav2BJBC.js",
     "name": "Dashboard",
     "src": "resources/js/Pages/Admin/Dashboard.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-DOUKX9mI.js"
+      "_MainLayout-BXSe9p7K.js"
     ]
   },
   "resources/js/Pages/Admin/Users.jsx": {
-    "file": "assets/Users-D8kIooMn.js",
+    "file": "assets/Users-DfKMJv6n.js",
     "name": "Users",
     "src": "resources/js/Pages/Admin/Users.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-DOUKX9mI.js",
-      "_search-CZRoagH-.js"
+      "_MainLayout-BXSe9p7K.js",
+      "_search-BXPiyeGE.js"
     ]
   },
   "resources/js/Pages/Affiliate.jsx": {
-    "file": "assets/Affiliate-DVYggKeu.js",
+    "file": "assets/Affiliate-DVFyTHp3.js",
     "name": "Affiliate",
     "src": "resources/js/Pages/Affiliate.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-DOUKX9mI.js"
+      "_MainLayout-BXSe9p7K.js"
     ]
   },
   "resources/js/Pages/Auth/ResetPassword.jsx": {
-    "file": "assets/ResetPassword-pC7HRP26.js",
+    "file": "assets/ResetPassword-Cm0SAJq9.js",
     "name": "ResetPassword",
     "src": "resources/js/Pages/Auth/ResetPassword.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-DOUKX9mI.js"
+      "_MainLayout-BXSe9p7K.js"
     ]
   },
   "resources/js/Pages/Blog.jsx": {
-    "file": "assets/Blog-Cc5h-5bx.js",
+    "file": "assets/Blog-CIwMF1v1.js",
     "name": "Blog",
     "src": "resources/js/Pages/Blog.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-DOUKX9mI.js",
-      "_arrow-right-DJDo6n1j.js",
-      "_clock-h9uH4zAt.js",
-      "_search-CZRoagH-.js"
+      "_MainLayout-BXSe9p7K.js",
+      "_arrow-right-Aw2-R0F8.js",
+      "_clock-CECONJBs.js",
+      "_search-BXPiyeGE.js"
     ]
   },
   "resources/js/Pages/Challenges.jsx": {
-    "file": "assets/Challenges-B6Nj4gO5.js",
+    "file": "assets/Challenges-BDTT720C.js",
     "name": "Challenges",
     "src": "resources/js/Pages/Challenges.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-DOUKX9mI.js",
-      "_arrow-right-DJDo6n1j.js"
+      "_MainLayout-BXSe9p7K.js",
+      "_arrow-right-Aw2-R0F8.js"
     ]
   },
   "resources/js/Pages/GamePlayer.jsx": {
-    "file": "assets/GamePlayer-C6z9Zh_F.js",
+    "file": "assets/GamePlayer-BqKu30Dq.js",
     "name": "GamePlayer",
     "src": "resources/js/Pages/GamePlayer.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-DOUKX9mI.js",
-      "_ObsidianEmblemSvg-ByCfcSIX.js"
+      "_MainLayout-BXSe9p7K.js",
+      "_ObsidianEmblemSvg-CPxW15Ps.js"
     ]
   },
   "resources/js/Pages/Lobby.jsx": {
-    "file": "assets/Lobby-CQpSMWiq.js",
+    "file": "assets/Lobby-rw5ICHW5.js",
     "name": "Lobby",
     "src": "resources/js/Pages/Lobby.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-DOUKX9mI.js",
-      "_search-CZRoagH-.js",
-      "_star-PtXxH_gQ.js",
-      "_ObsidianEmblemSvg-ByCfcSIX.js"
+      "_MainLayout-BXSe9p7K.js",
+      "_search-BXPiyeGE.js",
+      "_star-saaAPLzB.js",
+      "_ObsidianEmblemSvg-CPxW15Ps.js"
     ]
   },
   "resources/js/Pages/Promotions.jsx": {
-    "file": "assets/Promotions-R9RcG510.js",
+    "file": "assets/Promotions-Co17KwRE.js",
     "name": "Promotions",
     "src": "resources/js/Pages/Promotions.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-DOUKX9mI.js",
-      "_arrow-right-DJDo6n1j.js"
+      "_MainLayout-BXSe9p7K.js",
+      "_arrow-right-Aw2-R0F8.js"
     ]
   },
   "resources/js/Pages/Sponsorships.jsx": {
-    "file": "assets/Sponsorships-DimQh-Hk.js",
+    "file": "assets/Sponsorships-DQG8k1pM.js",
     "name": "Sponsorships",
     "src": "resources/js/Pages/Sponsorships.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-DOUKX9mI.js"
+      "_MainLayout-BXSe9p7K.js"
     ]
   },
   "resources/js/Pages/Static/FairPlay.jsx": {
-    "file": "assets/FairPlay-BUbSZ0XR.js",
+    "file": "assets/FairPlay-DMVACRid.js",
     "name": "FairPlay",
     "src": "resources/js/Pages/Static/FairPlay.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-DOUKX9mI.js",
-      "_LegalLayout-CR8Y08oW.js"
+      "_MainLayout-BXSe9p7K.js",
+      "_LegalLayout-CbwZd4Qv.js"
     ]
   },
   "resources/js/Pages/Static/KycAml.jsx": {
-    "file": "assets/KycAml-CaWOj1oJ.js",
+    "file": "assets/KycAml-BiY48uK_.js",
     "name": "KycAml",
     "src": "resources/js/Pages/Static/KycAml.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-DOUKX9mI.js",
-      "_LegalLayout-CR8Y08oW.js"
+      "_MainLayout-BXSe9p7K.js",
+      "_LegalLayout-CbwZd4Qv.js"
     ]
   },
   "resources/js/Pages/Static/Privacy.jsx": {
-    "file": "assets/Privacy-CFYKRv2r.js",
+    "file": "assets/Privacy-BGMf-No_.js",
     "name": "Privacy",
     "src": "resources/js/Pages/Static/Privacy.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-DOUKX9mI.js",
-      "_LegalLayout-CR8Y08oW.js"
+      "_MainLayout-BXSe9p7K.js",
+      "_LegalLayout-CbwZd4Qv.js"
     ]
   },
   "resources/js/Pages/Static/ResponsibleGaming.jsx": {
-    "file": "assets/ResponsibleGaming-CKzjh1dp.js",
+    "file": "assets/ResponsibleGaming-DGhR4RAL.js",
     "name": "ResponsibleGaming",
     "src": "resources/js/Pages/Static/ResponsibleGaming.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-DOUKX9mI.js",
-      "_clock-h9uH4zAt.js",
-      "_LegalLayout-CR8Y08oW.js"
+      "_MainLayout-BXSe9p7K.js",
+      "_clock-CECONJBs.js",
+      "_LegalLayout-CbwZd4Qv.js"
     ]
   },
   "resources/js/Pages/Static/Terms.jsx": {
-    "file": "assets/Terms-j6fEtBqS.js",
+    "file": "assets/Terms-jBzEwUrF.js",
     "name": "Terms",
     "src": "resources/js/Pages/Static/Terms.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-DOUKX9mI.js",
-      "_LegalLayout-CR8Y08oW.js"
+      "_MainLayout-BXSe9p7K.js",
+      "_LegalLayout-CbwZd4Qv.js"
     ]
   },
   "resources/js/Pages/Support.jsx": {
-    "file": "assets/Support-CyRLRCJR.js",
+    "file": "assets/Support-DGx6d4Rd.js",
     "name": "Support",
     "src": "resources/js/Pages/Support.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-DOUKX9mI.js",
-      "_clock-h9uH4zAt.js"
+      "_MainLayout-BXSe9p7K.js",
+      "_clock-CECONJBs.js"
     ]
   },
   "resources/js/Pages/VipClub.jsx": {
-    "file": "assets/VipClub-CbnPDVAN.js",
+    "file": "assets/VipClub-DlEbKEz9.js",
     "name": "VipClub",
     "src": "resources/js/Pages/VipClub.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-DOUKX9mI.js",
-      "_arrow-right-DJDo6n1j.js",
-      "_star-PtXxH_gQ.js"
+      "_MainLayout-BXSe9p7K.js",
+      "_arrow-right-Aw2-R0F8.js",
+      "_star-saaAPLzB.js"
     ]
   },
   "resources/js/app.jsx": {
-    "file": "assets/app-Mscl-LMH.js",
+    "file": "assets/app-DBoVAlAz.js",
     "name": "app",
     "src": "resources/js/app.jsx",
     "isEntry": true,
@@ -268,7 +268,7 @@
       "resources/js/Pages/Static/Privacy.jsx",
       "resources/js/Pages/Static/ResponsibleGaming.jsx",
       "resources/js/Pages/Static/Terms.jsx",
-      "_MainLayout-DOUKX9mI.js",
+      "_MainLayout-BXSe9p7K.js",
       "resources/js/Pages/Support.jsx",
       "resources/js/Pages/VipClub.jsx"
     ],
