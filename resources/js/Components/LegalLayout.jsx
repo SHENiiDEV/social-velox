@@ -1,5 +1,5 @@
 import React from 'react';
-import { Head, Link } from '@inertiajs/react';
+import { Head, Link, usePage } from '@inertiajs/react';
 import MainLayout from '../Layouts/MainLayout';
 import { 
   FileText, 
@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 
 export default function LegalLayout({ title, subtitle, activeTab, children }) {
+  const { company } = usePage().props;
   const tabs = [
     { id: 'terms', name: 'Terms of Service', href: '/terms', icon: FileText },
     { id: 'privacy', name: 'Privacy Policy (GDPR)', href: '/privacy', icon: ShieldCheck },
@@ -97,8 +98,16 @@ export default function LegalLayout({ title, subtitle, activeTab, children }) {
               <div className="space-y-3 text-xs text-[#B1BAD3] border-t border-[#213743] pt-3">
                 <div>
                   <p className="font-bold text-white">Platform Entity:</p>
-                  <p>Velox Entertainment N.V.</p>
+                  <p>{company?.name || 'Velox Entertainment N.V.'}</p>
+                  {company?.address && <p className="text-[11px] text-[#557086] mt-0.5">{company.address}</p>}
+                  {company?.reg_number && <p className="text-[11px] text-[#557086] font-mono">Reg No: {company.reg_number}</p>}
                 </div>
+                {company?.email && (
+                  <div>
+                    <p className="font-bold text-white">Support Email:</p>
+                    <a href={`mailto:${company.email}`} className="text-[#1475E1] hover:underline font-mono text-[11px]">{company.email}</a>
+                  </div>
+                )}
                 <div>
                   <p className="font-bold text-white">Protocol Audit:</p>
                   <p className="text-emerald-400 font-mono-numbers">NexusGGR Gold API v2.4</p>
@@ -106,13 +115,6 @@ export default function LegalLayout({ title, subtitle, activeTab, children }) {
                 <div>
                   <p className="font-bold text-white">Compliance Standard:</p>
                   <p>Sweepstakes & Social Gaming Directives 2026</p>
-                </div>
-                <div>
-                  <p className="font-bold text-white">Last Revised:</p>
-                  <p className="text-slate-400 flex items-center gap-1 mt-0.5">
-                    <Calendar className="w-3.5 h-3.5 text-[#557086]" />
-                    September 1, 2026
-                  </p>
                 </div>
               </div>
             </div>

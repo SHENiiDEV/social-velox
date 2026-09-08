@@ -15,11 +15,12 @@ import {
   ChevronRight,
   Gamepad2,
   Sparkles,
-  Coins
+  Building2,
+  Mail
 } from 'lucide-react';
 
 export default function LeftSidebar({ isOpen, currentCategory = 'all' }) {
-  const { auth } = usePage().props;
+  const { auth, company } = usePage().props;
   const [promosOpen, setPromosOpen] = useState(false);
   const [sponsorsOpen, setSponsorsOpen] = useState(false);
 
@@ -92,16 +93,45 @@ export default function LeftSidebar({ isOpen, currentCategory = 'all' }) {
 
         {/* Admin Suite Option if Admin */}
         {auth.user?.is_admin && (
-          <div className="pt-4 border-t border-[#213743]">
+          <div className="pt-3 border-t border-[#213743]">
             <Link
               href="/admin"
-              className="flex items-center gap-3 px-3 py-2.5 rounded-xl font-bold text-amber-400 bg-amber-500/10 border border-amber-500/20 hover:bg-amber-500/20 transition-all"
+              className="flex items-center gap-3 px-3 py-2 rounded-xl font-bold text-amber-400 bg-amber-500/10 border border-amber-500/20 hover:bg-amber-500/20 transition-all"
             >
               <ShieldCheck className="w-4 h-4 shrink-0 text-amber-400" />
               <span className={`truncate ${!isOpen && 'lg:hidden'}`}>Admin Control Panel</span>
             </Link>
           </div>
         )}
+
+        {/* Company Info Box (.env Driven) */}
+        <div className="pt-3 border-t border-[#213743]">
+          <div className="p-3 bg-[#1A2C38] border border-[#213743] rounded-xl space-y-1 text-[11px] text-[#B1BAD3]">
+            <div className="flex items-center gap-2 font-bold text-white truncate">
+              <Building2 className="w-3.5 h-3.5 text-[#1475E1] shrink-0" />
+              <span className={`truncate ${!isOpen && 'lg:hidden'}`}>{company?.name || 'Velox Entertainment N.V.'}</span>
+            </div>
+            {company?.address && (
+              <p className={`text-[10px] leading-tight text-[#557086] line-clamp-2 ${!isOpen && 'lg:hidden'}`}>
+                {company.address}
+              </p>
+            )}
+            {company?.reg_number && (
+              <p className={`text-[10px] font-mono text-[#557086] ${!isOpen && 'lg:hidden'}`}>
+                Reg No: {company.reg_number}
+              </p>
+            )}
+            {company?.email && (
+              <a
+                href={`mailto:${company.email}`}
+                className={`pt-1 flex items-center gap-1.5 text-[11px] text-[#1475E1] hover:underline font-bold truncate ${!isOpen && 'lg:hidden'}`}
+              >
+                <Mail className="w-3 h-3 shrink-0 text-[#1475E1]" />
+                <span className="truncate">{company.email}</span>
+              </a>
+            )}
+          </div>
+        </div>
       </div>
     </aside>
   );

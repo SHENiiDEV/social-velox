@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Middleware;
 
 class HandleInertiaRequests extends Middleware
@@ -39,7 +40,7 @@ class HandleInertiaRequests extends Middleware
 
         // Automatically invalidate guest sessions if guest mode is disabled
         if ($user && str_starts_with($user->user_code, 'GUEST_')) {
-            \Illuminate\Support\Facades\Auth::logout();
+            Auth::logout();
             $user = null;
         }
 
@@ -61,6 +62,7 @@ class HandleInertiaRequests extends Middleware
                 ] : null,
             ],
             'appName' => config('app.name', 'Velox Play'),
+            'company' => config('app.company'),
             'flash' => [
                 'success' => fn () => $request->session()->get('success'),
                 'error' => fn () => $request->session()->get('error'),

@@ -13,7 +13,14 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Velox Play'),
+
+    'company' => [
+        'name' => env('COMPANY_NAME', 'Velox Entertainment N.V.'),
+        'address' => env('COMPANY_ADDRESS', 'Heinekenstraat 44, Willemstad, Curaçao'),
+        'reg_number' => env('COMPANY_REG_NUMBER', '164892'),
+        'email' => env('COMPANY_EMAIL', 'support@velox-play.com'),
+    ],
 
     /*
     |--------------------------------------------------------------------------

@@ -4,7 +4,7 @@ import MainLayout from '../Layouts/MainLayout';
 import { Headphones, Mail, Clock, Send, CheckCircle2, ShieldCheck, HelpCircle } from 'lucide-react';
 
 export default function Support() {
-  const { auth } = usePage().props;
+  const { auth, company } = usePage().props;
 
   const [formData, setFormData] = useState({
     name: auth.user ? auth.user.name : '',
@@ -191,7 +191,7 @@ export default function Support() {
                 </div>
                 <div>
                   <h3 className="font-bold text-white text-sm">Direct Email Assistance</h3>
-                  <p className="text-xs text-[#B1BAD3]">support@velox-play.com</p>
+                  <p className="text-xs text-[#B1BAD3] font-mono">{company?.email || 'support@velox-play.com'}</p>
                 </div>
               </div>
             </div>
