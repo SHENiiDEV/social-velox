@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Head, Link, router, usePage } from '@inertiajs/react';
 import MainLayout from '../Layouts/MainLayout';
 import GameCard from '../Components/GameCard';
@@ -10,12 +10,44 @@ export default function Lobby({ games, featuredGames = [], liveWins = [], curren
   const [searchTerm, setSearchTerm] = useState(search || '');
   const [favoritedIds, setFavoritedIds] = useState(userFavoriteIds || []);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
-  const [displayCount, setDisplayCount] = useState(24);
+  const [loadedGames, setLoadedGames] = useState(games?.data || []);
+  const [loadingMore, setLoadingMore] = useState(false);
+
+  useEffect(() => {
+    setLoadedGames(games?.data || []);
+  }, [games?.data, currentCategory, search]);
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     router.get('/', { category: currentCategory, search: searchTerm }, { preserveState: true });
   };
+
+  const handleLoadMore = () => {
+    if (!games?.next_page_url || loadingMore) return;
+    setLoadingMore(true);
+
+    router.get(
+      games.next_page_url,
+      {},
+      {
+        preserveState: true,
+        preserveScroll: true,
+        only: ['games'],
+        onSuccess: (page) => {
+          const newGames = page.props.games?.data || [];
+          setLoadedGames((prev) => {
+            const existingIds = new Set(prev.map(g => g.id));
+            const filteredNew = newGames.filter(g => !existingIds.has(g.id));
+            return [...prev, ...filteredNew];
+          });
+          setLoadingMore(false);
+        },
+        onError: () => setLoadingMore(false),
+      }
+    );
+  };
+
+  const totalGamesCount = games?.total || loadedGames.length;
 
   const handleToggleFavorite = async (gameId) => {
     try {
@@ -267,15 +299,15 @@ export default function Lobby({ games, featuredGames = [], liveWins = [], curren
                         ? 'Table Games'
                         : currentCategory === 'mini'
                           ? 'Mini Games & Originals'
-                          : 'Casino Games'} ({allGamesList.length})
+                          : 'Casino Games'} ({totalGamesCount.toLocaleString()})
               </span>
             </h2>
           </div>
 
-          {allGamesList.length > 0 ? (
+          {loadedGames.length > 0 ? (
             <>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4">
-                {allGamesList.slice(0, displayCount).map((game) => (
+                {loadedGames.map((game) => (
                   <GameCard
                     key={game.id}
                     game={game}
@@ -286,13 +318,21 @@ export default function Lobby({ games, featuredGames = [], liveWins = [], curren
                 ))}
               </div>
 
-              {displayCount < allGamesList.length && (
+              {(games?.next_page_url || loadedGames.length < totalGamesCount) && (
                 <div className="flex justify-center pt-6">
                   <button
-                    onClick={() => setDisplayCount(prev => prev + 24)}
-                    className="px-8 py-3 bg-[#1A2C38] hover:bg-[#213743] border border-[#213743] text-white font-bold text-xs rounded-xl shadow-lg transition-all hover:scale-105"
+                    onClick={handleLoadMore}
+                    disabled={loadingMore}
+                    className="px-8 py-3 bg-[#1A2C38] hover:bg-[#213743] border border-[#213743] text-white font-bold text-xs rounded-xl shadow-lg transition-all hover:scale-105 disabled:opacity-50 flex items-center gap-2"
                   >
-                    Load More Games ({allGamesList.length - displayCount} remaining)
+                    {loadingMore ? (
+                      <>
+                        <span className="w-3.5 h-3.5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                        <span>Loading more games...</span>
+                      </>
+                    ) : (
+                      <span>Load More Games ({(totalGamesCount - loadedGames.length).toLocaleString()} remaining)</span>
+                    )}
                   </button>
                 </div>
               )}

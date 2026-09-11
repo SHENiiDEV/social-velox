@@ -58,7 +58,7 @@ class GameController extends Controller
 
         $games = $query->orderBy('is_featured', 'desc')
             ->orderBy('play_count', 'desc')
-            ->paginate(24)
+            ->paginate(36)
             ->withQueryString();
 
         $featuredGames = Game::where('is_active', true)
