@@ -10,6 +10,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 
 class GgrGoldApiController extends Controller
 {
@@ -18,28 +19,47 @@ class GgrGoldApiController extends Controller
      */
     public function handle(Request $request): JsonResponse
     {
-        $secret = $request->header('Agent-Secret') 
-            ?? $request->input('agent_secret') 
+        Log::info('GGR Gold API Webhook Request:', [
+            'method' => $request->input('method'),
+            'user_code' => $request->input('user_code'),
+            'agent_code' => $request->input('agent_code'),
+            'body' => $request->all(),
+        ]);
+
+        $secret = $request->header('Agent-Secret')
+            ?? $request->header('agent_secret')
+            ?? $request->header('X-Agent-Secret')
+            ?? $request->input('agent_secret')
             ?? $request->input('agentSecret');
 
-        $expectedSecret = config('services.nexus.agent_secret', '0fbfd24390fac179e21e1ccee9d243ff');
-
-        if ($secret !== $expectedSecret) {
-            return response()->json([
-                'status' => 0,
-                'msg' => 'INVALID_SECRET',
-            ], 401);
+        $expectedSecret = config('services.nexus_ggr.agent_secret');
+        if (empty($expectedSecret)) {
+            $expectedSecret = config('services.nexus.agent_secret');
+        }
+        if (empty($expectedSecret)) {
+            $expectedSecret = env('GGR_AGENT_SECRET');
         }
 
-        $method = $request->input('method');
+        if (!empty($expectedSecret) && $secret !== $expectedSecret) {
+            Log::warning('GGR Gold API invalid secret:', ['received' => $secret, 'expected' => $expectedSecret]);
+
+            return response()->json([
+                'status' => 0,
+                'user_balance' => 0,
+                'msg' => 'INVALID_SECRET',
+            ], 200);
+        }
+
+        $method = $request->input('method') ?? $request->input('action');
 
         return match ($method) {
-            'user_balance' => $this->handleUserBalance($request),
-            'transaction' => $this->handleTransaction($request),
+            'user_balance', 'user_balance_v2', 'userBalance' => $this->handleUserBalance($request),
+            'transaction', 'transaction_v2', 'debit_credit' => $this->handleTransaction($request),
             default => response()->json([
                 'status' => 0,
+                'user_balance' => 0,
                 'msg' => 'INVALID_METHOD',
-            ], 400),
+            ], 200),
         };
     }
 
@@ -48,22 +68,32 @@ class GgrGoldApiController extends Controller
      */
     protected function handleUserBalance(Request $request): JsonResponse
     {
-        $userCode = $request->input('user_code');
-        $user = User::where('user_code', $userCode)->first();
+        $userCode = $request->input('user_code') ?? $request->input('user_id');
 
-        if (!$user || $user->is_banned) {
+        if (empty($userCode)) {
             return response()->json([
                 'status' => 0,
-                'user_balance' => 0.00,
-                'msg' => 'USER_BLOCKED',
-            ]);
+                'user_balance' => 0,
+                'msg' => 'INTERNAL_ERROR',
+            ], 200);
+        }
+
+        $user = User::where('user_code', $userCode)
+            ->orWhere('id', $userCode)
+            ->first();
+
+        if (! $user || $user->is_banned) {
+            return response()->json([
+                'status' => 0,
+                'user_balance' => 0,
+                'msg' => 'INTERNAL_ERROR',
+            ], 200);
         }
 
         return response()->json([
             'status' => 1,
-            'user_balance' => (float) $user->game_balance,
-            'msg' => 'SUCCESS',
-        ]);
+            'user_balance' => (float) round((float) $user->game_balance, 2),
+        ], 200);
     }
 
     /**
@@ -71,7 +101,7 @@ class GgrGoldApiController extends Controller
      */
     protected function handleTransaction(Request $request): JsonResponse
     {
-        $userCode = $request->input('user_code');
+        $userCode = $request->input('user_code') ?? $request->input('user_id');
         $txnId = $request->input('txn_id');
         $txnIdV2 = $request->input('txn_id_v2') ?? $txnId;
         $txnType = $request->input('txn_type', 'debit_credit');
@@ -116,14 +146,17 @@ class GgrGoldApiController extends Controller
         // 2. Atomic DB Transaction with Pessimistic Row Lock
         try {
             return DB::transaction(function () use ($userCode, $txnId, $txnIdV2, $txnType, $roundId, $gameCode, $betMoney, $winMoney, $request) {
-                $user = User::where('user_code', $userCode)->lockForUpdate()->first();
+                $user = User::where('user_code', $userCode)
+                    ->orWhere('id', $userCode)
+                    ->lockForUpdate()
+                    ->first();
 
-                if (!$user || $user->is_banned) {
+                if (! $user || $user->is_banned) {
                     return response()->json([
                         'status' => 0,
                         'user_balance' => 0.00,
-                        'msg' => 'USER_BLOCKED',
-                    ]);
+                        'msg' => 'INTERNAL_ERROR',
+                    ], 200);
                 }
 
                 $beforeBalance = (float) $user->game_balance;
@@ -133,7 +166,7 @@ class GgrGoldApiController extends Controller
                         'status' => 0,
                         'user_balance' => $beforeBalance,
                         'msg' => 'INSUFFICIENT_FUNDS',
-                    ]);
+                    ], 200);
                 }
 
                 $afterBalance = round($beforeBalance - $betMoney + $winMoney, 2);
@@ -180,16 +213,16 @@ class GgrGoldApiController extends Controller
                     'status' => 1,
                     'user_balance' => $afterBalance,
                     'msg' => 'SUCCESS',
-                ]);
+                ], 200);
             });
         } catch (\Exception $e) {
-            Log::error('NexusGGR Transaction Exception: ' . $e->getMessage());
+            Log::error('NexusGGR Transaction Exception: '.$e->getMessage());
 
             return response()->json([
                 'status' => 0,
                 'user_balance' => 0.00,
-                'msg' => 'TRANSACTION_FAILED',
-            ], 500);
+                'msg' => 'INTERNAL_ERROR',
+            ], 200);
         }
     }
 }

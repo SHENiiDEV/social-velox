@@ -14,7 +14,10 @@ class GoldApiTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        config(['services.nexus.agent_secret' => '0fbfd24390fac179e21e1ccee9d243ff']);
+        config([
+            'services.nexus.agent_secret' => '0fbfd24390fac179e21e1ccee9d243ff',
+            'services.nexus_ggr.agent_secret' => '0fbfd24390fac179e21e1ccee9d243ff',
+        ]);
     }
 
     public function test_gold_api_rejects_invalid_secret(): void
@@ -24,7 +27,7 @@ class GoldApiTest extends TestCase
             'agent_secret' => 'WRONG_SECRET',
         ]);
 
-        $response->assertStatus(401)
+        $response->assertStatus(200)
             ->assertJson(['status' => 0, 'msg' => 'INVALID_SECRET']);
     }
 
@@ -48,7 +51,6 @@ class GoldApiTest extends TestCase
             ->assertJson([
                 'status' => 1,
                 'user_balance' => 250.50,
-                'msg' => 'SUCCESS',
             ]);
     }
 
@@ -73,7 +75,7 @@ class GoldApiTest extends TestCase
             ->assertJson([
                 'status' => 0,
                 'user_balance' => 0.00,
-                'msg' => 'USER_BLOCKED',
+                'msg' => 'INTERNAL_ERROR',
             ]);
     }
 
