@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\Game;
 use App\Services\GgrApiService;
+use App\Services\NexusGgrService;
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
 
@@ -96,13 +97,13 @@ class GgrSyncGames extends Command
 
             foreach ($gamesList as $g) {
                 $gameCode = $g['game_code'] ?? ($g['code'] ?? null);
-                $gameName = $g['game_name'] ?? ($g['name'] ?? ($g['title'] ?? $gameCode));
-                $banner = $g['banner'] ?? ($g['image'] ?? ($g['cover_image'] ?? null));
-                $status = $g['status'] ?? 1;
-
                 if (! $gameCode) {
                     continue;
                 }
+
+                $gameName = NexusGgrService::parseGameName($g['game_name'] ?? ($g['name'] ?? ($g['title'] ?? $gameCode)), $gameCode);
+                $cover = NexusGgrService::parseGameBanner($providerCode, $gameCode, $g['banner'] ?? ($g['image'] ?? ($g['cover_image'] ?? null)));
+                $status = $g['status'] ?? 1;
 
                 // 4. Определение категории и типа игры
                 $titleLower = strtolower($gameName);
@@ -139,8 +140,6 @@ class GgrSyncGames extends Command
                     'vswaysdogs', 'vs10bbbonanza', 'vs10splash', 'mahjong-ways-2', 'fortune-tiger',
                     'fortune-rabbit', '1067', '1309', 'minigame_aviator', 'nxpkul2hgclallno', 'crazytime00000001',
                 ]);
-
-                $cover = $banner ?: ($fallbackCovers[$category] ?? $fallbackCovers['Slots']);
 
                 // 5. Запись игры в базу данных
                 Game::updateOrCreate(

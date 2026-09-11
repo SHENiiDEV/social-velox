@@ -2,9 +2,6 @@
 
 namespace App\Services;
 
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
-
 class GgrApiService
 {
     protected NexusGgrService $nexusService;
@@ -20,7 +17,7 @@ class GgrApiService
     public function getProviders(): array
     {
         $providers = $this->nexusService->fetchProviders();
-        if (!empty($providers)) {
+        if (! empty($providers)) {
             return [
                 'status' => 1,
                 'providers' => $providers,
@@ -57,7 +54,7 @@ class GgrApiService
     public function getGames(string $providerCode): array
     {
         $res = $this->nexusService->fetchGameList($providerCode);
-        if (($res['status'] ?? 0) === 1 && !empty($res['games'])) {
+        if (($res['status'] ?? 0) === 1 && ! empty($res['games'])) {
             return $res;
         }
 
@@ -88,27 +85,27 @@ class GgrApiService
                 ['game_code' => 'vs20rhino', 'game_name' => 'Great Rhino Megaways', 'banner' => 'https://images.pragmaticplay.net/vs20rhino/vs20rhino_top_banner.jpg'],
             ],
             'PGSOFT' => [
-                ['game_code' => 'mahjong-ways-2', 'game_name' => 'Mahjong Ways 2', 'banner' => 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&auto=format&fit=crop&q=60'],
-                ['game_code' => 'fortune-tiger', 'game_name' => 'Fortune Tiger', 'banner' => 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&auto=format&fit=crop&q=60'],
-                ['game_code' => 'fortune-rabbit', 'game_name' => 'Fortune Rabbit', 'banner' => 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&auto=format&fit=crop&q=60'],
-                ['game_code' => 'wild-bandito', 'game_name' => 'Wild Bandito', 'banner' => 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&auto=format&fit=crop&q=60'],
-                ['game_code' => 'treasures-of-aztec', 'game_name' => 'Treasures of Aztec', 'banner' => 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&auto=format&fit=crop&q=60'],
+                ['game_code' => 'mahjong-ways-2', 'game_name' => 'Mahjong Ways 2', 'banner' => 'https://m.pgsoft-games.com/games/mahjong-ways-2/banner.png'],
+                ['game_code' => 'fortune-tiger', 'game_name' => 'Fortune Tiger', 'banner' => 'https://m.pgsoft-games.com/games/fortune-tiger/banner.png'],
+                ['game_code' => 'fortune-rabbit', 'game_name' => 'Fortune Rabbit', 'banner' => 'https://m.pgsoft-games.com/games/fortune-rabbit/banner.png'],
+                ['game_code' => 'wild-bandito', 'game_name' => 'Wild Bandito', 'banner' => 'https://m.pgsoft-games.com/games/wild-bandito/banner.png'],
+                ['game_code' => 'treasures-of-aztec', 'game_name' => 'Treasures of Aztec', 'banner' => 'https://m.pgsoft-games.com/games/treasures-of-aztec/banner.png'],
             ],
             'SPRIBE' => [
-                ['game_code' => 'minigame_aviator', 'game_name' => 'Aviator', 'banner' => 'https://images.unsplash.com/photo-1508873696983-2df515122519?w=800&auto=format&fit=crop&q=60'],
-                ['game_code' => 'minigame_plinko', 'game_name' => 'Plinko', 'banner' => 'https://images.unsplash.com/photo-1508873696983-2df515122519?w=800&auto=format&fit=crop&q=60'],
-                ['game_code' => 'minigame_mines', 'game_name' => 'Mines', 'banner' => 'https://images.unsplash.com/photo-1508873696983-2df515122519?w=800&auto=format&fit=crop&q=60'],
-                ['game_code' => 'minigame_dice', 'game_name' => 'Dice', 'banner' => 'https://images.unsplash.com/photo-1508873696983-2df515122519?w=800&auto=format&fit=crop&q=60'],
+                ['game_code' => 'minigame_aviator', 'game_name' => 'Aviator', 'banner' => 'https://spribe.co/assets/games/aviator.png'],
+                ['game_code' => 'minigame_plinko', 'game_name' => 'Plinko', 'banner' => 'https://spribe.co/assets/games/plinko.png'],
+                ['game_code' => 'minigame_mines', 'game_name' => 'Mines', 'banner' => 'https://spribe.co/assets/games/mines.png'],
+                ['game_code' => 'minigame_dice', 'game_name' => 'Dice', 'banner' => 'https://spribe.co/assets/games/dice.png'],
             ],
             'EVOLUTION' => [
-                ['game_code' => 'crazytime00000001', 'game_name' => 'Crazy Time', 'banner' => 'https://images.unsplash.com/photo-1511193311914-0346f16efe90?w=800&auto=format&fit=crop&q=60'],
-                ['game_code' => 'lightningroulette', 'game_name' => 'Lightning Roulette', 'banner' => 'https://images.unsplash.com/photo-1511193311914-0346f16efe90?w=800&auto=format&fit=crop&q=60'],
-                ['game_code' => 'monopoly000000001', 'game_name' => 'Monopoly Live', 'banner' => 'https://images.unsplash.com/photo-1511193311914-0346f16efe90?w=800&auto=format&fit=crop&q=60'],
+                ['game_code' => 'crazytime00000001', 'game_name' => 'Crazy Time', 'banner' => 'https://cdn.nexusggr.dev/banners/EVOLUTION/crazytime00000001.png'],
+                ['game_code' => 'lightningroulette', 'game_name' => 'Lightning Roulette', 'banner' => 'https://cdn.nexusggr.dev/banners/EVOLUTION/lightningroulette.png'],
+                ['game_code' => 'monopoly000000001', 'game_name' => 'Monopoly Live', 'banner' => 'https://cdn.nexusggr.dev/banners/EVOLUTION/monopoly000000001.png'],
             ],
         ];
 
         return $catalog[$providerCode] ?? [
-            ['game_code' => strtolower($providerCode).'_game_1', 'game_name' => "{$providerCode} Slot Extreme", 'banner' => 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&auto=format&fit=crop&q=60'],
+            ['game_code' => strtolower($providerCode).'_game_1', 'game_name' => "{$providerCode} Slot Extreme", 'banner' => "https://cdn.nexusggr.dev/banners/{$providerCode}/".strtolower($providerCode).'_game_1.png'],
         ];
     }
 }

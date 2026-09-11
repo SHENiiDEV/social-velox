@@ -227,7 +227,7 @@ export default function Lobby({ games, featuredGames = [], liveWins = [], curren
             <div className="flex items-center justify-between">
               <h2 className="text-lg font-black text-white flex items-center gap-2 tracking-tight">
                 <Flame className="w-5 h-5 text-amber-500 animate-bounce" />
-                <span>Stake Originals & Hot Hits</span>
+                <span>Velox Originals & Hot Hits</span>
               </h2>
             </div>
 
