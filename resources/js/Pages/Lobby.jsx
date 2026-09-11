@@ -205,17 +205,23 @@ export default function Lobby({ games, featuredGames = [], liveWins = [], curren
           </form>
 
           <div className="flex items-center gap-2 overflow-x-auto w-full sm:w-auto pb-2 sm:pb-0 no-scrollbar">
-            {['all', 'slots', 'live', 'table', 'mini'].map((cat) => (
+            {[
+              { id: 'all', label: 'All Games' },
+              { id: 'slots', label: 'Slots' },
+              { id: 'live', label: 'Live Casino' },
+              { id: 'table', label: 'Table Games' },
+              { id: 'mini', label: 'Mini Games' },
+            ].map((cat) => (
               <button
-                key={cat}
-                onClick={() => router.get('/', { category: cat, search: searchTerm })}
-                className={`px-4 py-2 text-xs font-bold rounded-xl capitalize transition-all whitespace-nowrap ${
-                  currentCategory === cat
+                key={cat.id}
+                onClick={() => router.get('/', { category: cat.id, search: searchTerm }, { preserveState: true })}
+                className={`px-4 py-2 text-xs font-bold rounded-xl transition-all whitespace-nowrap ${
+                  currentCategory === cat.id
                     ? 'bg-[#1475E1] text-white shadow-lg shadow-blue-500/20'
                     : 'bg-[#1A2C38] text-[#B1BAD3] hover:text-white hover:bg-[#213743]'
                 }`}
               >
-                {cat === 'all' ? 'All Games' : cat}
+                {cat.label}
               </button>
             ))}
           </div>
@@ -250,7 +256,19 @@ export default function Lobby({ games, featuredGames = [], liveWins = [], curren
           <div className="flex items-center justify-between">
             <h2 className="text-lg font-black text-white flex items-center gap-2 tracking-tight">
               <Sparkles className="w-5 h-5 text-[#1475E1]" />
-              <span>Certified Casino Slots ({allGamesList.length})</span>
+              <span>
+                {currentCategory === 'all'
+                  ? 'All Casino Games'
+                  : currentCategory === 'slots'
+                    ? 'Certified Casino Slots'
+                    : currentCategory === 'live'
+                      ? 'Live Casino Games'
+                      : currentCategory === 'table'
+                        ? 'Table Games'
+                        : currentCategory === 'mini'
+                          ? 'Mini Games & Originals'
+                          : 'Casino Games'} ({allGamesList.length})
+              </span>
             </h2>
           </div>
 

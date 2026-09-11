@@ -26,13 +26,30 @@ class GameController extends Controller
      */
     public function index(Request $request): Response
     {
-        $category = $request->query('category', 'all');
+        $category = strtolower($request->query('category', 'all'));
         $search = $request->query('search');
 
         $query = Game::where('is_active', true);
 
         if ($category !== 'all') {
-            $query->where('category', $category);
+            if (in_array($category, ['slots', 'slot'])) {
+                $query->whereIn('category', ['Slots', 'slots', 'buy_feature', 'megaways', 'jackpots']);
+            } elseif (in_array($category, ['live', 'live casino', 'live_casino'])) {
+                $query->where(function ($q) {
+                    $q->where('category', 'Live Casino')
+                        ->orWhere('category', 'live')
+                        ->orWhere('category', 'LIKE', '%live%');
+                });
+            } elseif (in_array($category, ['table', 'table games', 'table_games'])) {
+                $query->whereIn('category', ['Table Games', 'table', 'Roulette', 'Baccarat', 'Blackjack']);
+            } elseif (in_array($category, ['mini', 'mini games', 'mini_games', 'originals'])) {
+                $query->where(function ($q) {
+                    $q->whereIn('category', ['Mini Games', 'mini', 'originals'])
+                        ->orWhere('category', 'LIKE', '%mini%');
+                });
+            } else {
+                $query->where('category', 'LIKE', "%{$category}%");
+            }
         }
 
         if ($search) {

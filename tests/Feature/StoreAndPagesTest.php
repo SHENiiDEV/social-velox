@@ -31,6 +31,39 @@ class StoreAndPagesTest extends TestCase
         $responseVip->assertStatus(200);
     }
 
+    public function test_lobby_category_filter_returns_correct_games(): void
+    {
+        \App\Models\Game::create([
+            'provider_id' => 1,
+            'provider_code' => 'PRAGMATIC',
+            'provider_name' => 'Pragmatic Play',
+            'game_code' => 'vs20olympus',
+            'provider_game_id' => 'ggr_PRAGMATIC_vs20olympus',
+            'name' => 'Gates of Olympus',
+            'slug' => 'pragmatic-gates-of-olympus',
+            'category' => 'Slots',
+            'is_active' => true,
+        ]);
+
+        \App\Models\Game::create([
+            'provider_id' => 1,
+            'provider_code' => 'EVOLUTION',
+            'provider_name' => 'Evolution',
+            'game_code' => 'crazytime',
+            'provider_game_id' => 'ggr_EVOLUTION_crazytime',
+            'name' => 'Crazy Time',
+            'slug' => 'evolution-crazy-time',
+            'category' => 'Live Casino',
+            'is_active' => true,
+        ]);
+
+        $responseSlots = $this->get('/?category=slots');
+        $responseSlots->assertStatus(200);
+
+        $responseLive = $this->get('/?category=live');
+        $responseLive->assertStatus(200);
+    }
+
     public function test_custom_amount_purchase_awards_one_vip_xp_per_eur(): void
     {
         $user = User::factory()->create([
