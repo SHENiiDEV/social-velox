@@ -186,9 +186,9 @@ export default function LeftSidebar({
                   {company.address}
                 </p>
               )}
-              {company?.reg_number && (
+              {(company?.number || company?.reg_number) && (
                 <p className="text-[10px] font-mono text-[#557086]">
-                  Reg No: {company.reg_number}
+                  Reg No: {company.number || company.reg_number}
                 </p>
               )}
               {company?.email && (

@@ -240,16 +240,16 @@ export default function Footer() {
             <span className="text-white font-bold">{company?.name || 'Velox Entertainment N.V.'}</span>
             <span>•</span>
             <span>{company?.address || 'Heinekenstraat 44, Willemstad, Curaçao'}</span>
-            {company?.reg_number && (
+            {(company?.number || company?.reg_number) && (
               <>
                 <span>•</span>
-                <span className="font-mono">Reg No: {company.reg_number}</span>
+                <span className="font-mono">Reg No: {company.number || company.reg_number}</span>
               </>
             )}
           </div>
 
           <div className="text-center md:text-right">
-            <p>© {new Date().getFullYear()} Velox Play. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} {company?.name || 'Velox Play'}. All rights reserved.</p>
           </div>
         </div>
       </div>

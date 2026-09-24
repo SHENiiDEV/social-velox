@@ -100,7 +100,7 @@ export default function LegalLayout({ title, subtitle, activeTab, children }) {
                   <p className="font-bold text-white">Platform Entity:</p>
                   <p>{company?.name || 'Velox Entertainment N.V.'}</p>
                   {company?.address && <p className="text-[11px] text-[#557086] mt-0.5">{company.address}</p>}
-                  {company?.reg_number && <p className="text-[11px] text-[#557086] font-mono">Reg No: {company.reg_number}</p>}
+                  {(company?.number || company?.reg_number) && <p className="text-[11px] text-[#557086] font-mono">Reg No: {company.number || company.reg_number}</p>}
                 </div>
                 {company?.email && (
                   <div>

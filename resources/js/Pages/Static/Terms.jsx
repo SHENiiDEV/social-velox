@@ -1,12 +1,15 @@
 import React from 'react';
+import { usePage } from '@inertiajs/react';
 import LegalLayout from '../../Components/LegalLayout';
-import { ShieldAlert, Info, CheckCircle, FileText } from 'lucide-react';
+import { ShieldAlert, Info, CheckCircle, FileText, Building2 } from 'lucide-react';
 
 export default function Terms() {
+  const { company } = usePage().props;
+
   return (
     <LegalLayout
       title="Terms of Service"
-      subtitle="Complete contractual agreement, virtual coin mechanics, and player eligibility guidelines for Velox Play."
+      subtitle="Complete contractual agreement, virtual coin mechanics, and player eligibility guidelines."
       activeTab="terms"
     >
       <div className="bg-[#1A2C38] border border-[#213743] rounded-3xl p-6 sm:p-8 space-y-8 text-xs text-[#B1BAD3] leading-relaxed shadow-xl">
@@ -92,8 +95,29 @@ export default function Terms() {
             <span>Limitation of Liability</span>
           </h2>
           <p>
-            Velox Play is provided on an "AS IS" and "AS AVAILABLE" basis. We make no warranties regarding uninterrupted platform availability, latency, or server downtime. To the maximum extent permitted by law, Velox Entertainment N.V. shall not be liable for indirect or consequential damages.
+            The platform is provided on an "AS IS" and "AS AVAILABLE" basis. We make no warranties regarding uninterrupted platform availability, latency, or server downtime. To the maximum extent permitted by law, {company?.name || 'Velox Entertainment N.V.'} shall not be liable for indirect or consequential damages.
           </p>
+        </section>
+
+        {/* Section 7 */}
+        <section className="space-y-3">
+          <h2 className="text-base font-black text-white uppercase tracking-wider flex items-center gap-2">
+            <span className="w-6 h-6 rounded-lg bg-[#1475E1] text-white flex items-center justify-center text-xs">7</span>
+            <span>Operating Entity & Legal Inquiries</span>
+          </h2>
+          <p>
+            This service is operated and governed by <strong>{company?.name || 'Velox Entertainment N.V.'}</strong>
+            {company?.address && <>, located at {company.address}</>}
+            {(company?.number || company?.reg_number) && <>, Registration Number: {company.number || company.reg_number}</>}.
+          </p>
+          {company?.email && (
+            <p>
+              For legal questions, compliance audits, or contractual inquiries, contact our legal department at{' '}
+              <a href={`mailto:${company.email}`} className="text-[#1475E1] hover:underline font-mono">
+                {company.email}
+              </a>.
+            </p>
+          )}
         </section>
       </div>
     </LegalLayout>

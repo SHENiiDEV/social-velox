@@ -1,12 +1,15 @@
 import React from 'react';
+import { usePage } from '@inertiajs/react';
 import LegalLayout from '../../Components/LegalLayout';
-import { Lock, ShieldCheck, Database, Eye, Server, Cpu } from 'lucide-react';
+import { Lock, ShieldCheck, Database, Eye, Server, Cpu, Building2 } from 'lucide-react';
 
 export default function Privacy() {
+  const { company } = usePage().props;
+
   return (
     <LegalLayout
       title="Privacy Policy & Data Governance"
-      subtitle="How Velox Play collects, encrypts, processes, and protects player personal data in compliance with GDPR and CCPA standards."
+      subtitle="How we collect, encrypt, process, and protect player personal data in compliance with GDPR and CCPA standards."
       activeTab="privacy"
     >
       <div className="bg-[#1A2C38] border border-[#213743] rounded-3xl p-6 sm:p-8 space-y-8 text-xs text-[#B1BAD3] leading-relaxed shadow-xl">
@@ -84,6 +87,27 @@ export default function Privacy() {
             <li><strong>Right to Erasure ("Right to be Forgotten"):</strong> Request complete deletion of your account and credentials.</li>
             <li><strong>Right to Rectification:</strong> Update inaccurate address, DOB, or phone details.</li>
           </ul>
+        </section>
+
+        {/* Section 5 - Data Controller */}
+        <section className="space-y-3">
+          <h2 className="text-base font-black text-white uppercase tracking-wider flex items-center gap-2">
+            <span className="w-6 h-6 rounded-lg bg-emerald-500 text-black flex items-center justify-center text-xs font-bold">5</span>
+            <span>Data Controller & Privacy Inquiries</span>
+          </h2>
+          <p>
+            The designated Data Controller responsible for the processing and storage of player personal data is <strong>{company?.name || 'Velox Entertainment N.V.'}</strong>
+            {company?.address && <>, registered at {company.address}</>}
+            {(company?.number || company?.reg_number) && <>, Registration No. {company.number || company.reg_number}</>}.
+          </p>
+          {company?.email && (
+            <p>
+              To exercise your GDPR data protection rights, submit a data deletion request, or contact our Data Protection Officer, please email{' '}
+              <a href={`mailto:${company.email}`} className="text-emerald-400 hover:underline font-mono">
+                {company.email}
+              </a>.
+            </p>
+          )}
         </section>
       </div>
     </LegalLayout>

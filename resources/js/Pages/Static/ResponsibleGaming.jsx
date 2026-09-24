@@ -1,12 +1,15 @@
 import React from 'react';
+import { usePage } from '@inertiajs/react';
 import LegalLayout from '../../Components/LegalLayout';
-import { HeartHandshake, ShieldCheck, Clock, Ban, PhoneCall, AlertTriangle } from 'lucide-react';
+import { HeartHandshake, ShieldCheck, Clock, Ban, PhoneCall, AlertTriangle, Mail } from 'lucide-react';
 
 export default function ResponsibleGaming() {
+  const { company } = usePage().props;
+
   return (
     <LegalLayout
       title="Responsible Social Gaming"
-      subtitle="Velox Play is dedicated to providing a safe, balanced, and enjoyable social gaming environment for all players."
+      subtitle="Dedicated to providing a safe, balanced, and enjoyable social gaming environment for all players."
       activeTab="responsible-gaming"
     >
       <div className="bg-[#1A2C38] border border-[#213743] rounded-3xl p-6 sm:p-8 space-y-8 text-xs text-[#B1BAD3] leading-relaxed shadow-xl">
@@ -95,6 +98,18 @@ export default function ResponsibleGaming() {
               </div>
               <span className="text-xs font-mono font-bold text-amber-400">1-800-522-4700</span>
             </div>
+
+            {company?.email && (
+              <div className="p-3 bg-[#0F212E] rounded-xl border border-[#213743] flex items-center justify-between">
+                <div>
+                  <p className="font-bold">Platform Self-Exclusion & Assistance</p>
+                  <p className="text-[11px] text-[#B1BAD3]">Direct email request for limits, cool-off, or closure</p>
+                </div>
+                <a href={`mailto:${company.email}`} className="text-xs font-mono font-bold text-cyan-400 hover:underline">
+                  {company.email}
+                </a>
+              </div>
+            )}
           </div>
         </section>
       </div>

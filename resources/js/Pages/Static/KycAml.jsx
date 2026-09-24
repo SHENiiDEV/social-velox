@@ -1,8 +1,11 @@
 import React from 'react';
+import { usePage } from '@inertiajs/react';
 import LegalLayout from '../../Components/LegalLayout';
 import { Lock, ShieldAlert, FileText, CheckCircle2, UserCheck } from 'lucide-react';
 
 export default function KycAml() {
+  const { company } = usePage().props;
+
   return (
     <LegalLayout
       title="KYC & AML Policy"
@@ -17,7 +20,7 @@ export default function KycAml() {
           <div>
             <h4 className="font-bold text-xs text-purple-400 uppercase">ANTI-MONEY LAUNDERING & SANCTIONS COMPLIANCE</h4>
             <p className="text-[11px] text-[#B1BAD3] mt-1">
-              Velox Entertainment N.V. maintains strict Anti-Money Laundering (AML) policies to prevent illegal financial activity, identity fraud, and sanctioned jurisdiction access.
+              {company?.name || 'Velox Entertainment N.V.'} maintains strict Anti-Money Laundering (AML) policies to prevent illegal financial activity, identity fraud, and sanctioned jurisdiction access.
             </p>
           </div>
         </div>
