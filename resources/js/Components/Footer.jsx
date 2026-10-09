@@ -45,7 +45,6 @@ export default function Footer() {
     { name: 'Privacy Policy (GDPR)', href: '/privacy' },
     { name: 'Responsible Gaming', href: '/responsible-gaming' },
     { name: 'Provably Fair & RNG', href: '/fair-play' },
-    { name: 'KYC & AML Compliance', href: '/kyc-aml' },
   ];
 
   const supportLinks = [

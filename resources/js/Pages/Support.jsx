@@ -69,7 +69,7 @@ export default function Support() {
           </div>
           <h1 className="text-3xl sm:text-4xl font-black text-white">Velox Help & Support</h1>
           <p className="text-sm text-[#B1BAD3] max-w-2xl">
-            Have questions about store package deposits, VIP levels, or account verification? Submit a support request below.
+            Have questions about store package deposits, VIP levels, or account access? Submit a support request below.
           </p>
         </div>
 
@@ -134,7 +134,7 @@ export default function Support() {
                   >
                     <option value="store_deposit">Store Deposit & SC Balance</option>
                     <option value="vip_level">VIP Level & XP Rewards</option>
-                    <option value="account_verification">Account Settings & Security</option>
+                    <option value="account_security">Account Settings & Security</option>
                     <option value="game_issue">Game Inquiry</option>
                     <option value="general">General Support</option>
                   </select>

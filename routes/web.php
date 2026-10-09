@@ -84,7 +84,7 @@ Route::get('/terms', [StaticPageController::class, 'terms'])->name('terms');
 Route::get('/privacy', [StaticPageController::class, 'privacy'])->name('privacy');
 Route::get('/responsible-gaming', [StaticPageController::class, 'responsibleGaming'])->name('responsible-gaming');
 Route::get('/fair-play', [StaticPageController::class, 'fairPlay'])->name('fair-play');
-Route::get('/kyc-aml', [StaticPageController::class, 'kycAml'])->name('kyc-aml');
+Route::permanentRedirect('/kyc-aml', '/terms')->name('kyc-aml');
 
 // Aliases for /legal/terms and /legal/privacy
 Route::get('/legal/terms', [StaticPageController::class, 'terms']);

@@ -5,8 +5,6 @@ import ObsidianLogo from './ObsidianLogo';
 import { ALLOWED_COUNTRIES } from '../Utils/countries';
 
 export default function AuthModal({ isOpen, onClose, initialTab = 'login' }) {
-  if (!isOpen) return null;
-
   const [activeTab, setActiveTab] = useState(initialTab); // 'login', 'register', 'forgot'
   const [loadingGuest, setLoadingGuest] = useState(false);
   const [forgotSubmittedMsg, setForgotSubmittedMsg] = useState(null);
@@ -35,6 +33,8 @@ export default function AuthModal({ isOpen, onClose, initialTab = 'login' }) {
     postal_code: '',
     agreed_to_terms: false,
   });
+
+  if (!isOpen) return null;
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
@@ -231,7 +231,8 @@ export default function AuthModal({ isOpen, onClose, initialTab = 'login' }) {
           ) : (
             <form onSubmit={handleRegisterSubmit} className="space-y-4">
               {Object.keys(registerForm.errors).length > 0 && (
-                <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-lg text-red-400 text-xs space-y-1">
+                <div role="alert" className="p-4 bg-red-500/10 border border-red-500/30 rounded-xl text-red-300 text-xs space-y-2">
+                  <p className="font-semibold text-sm text-white">Please check your details</p>
                   {Object.values(registerForm.errors).map((err, idx) => (
                     <p key={idx}>{err}</p>
                   ))}
@@ -275,18 +276,27 @@ export default function AuthModal({ isOpen, onClose, initialTab = 'login' }) {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-[#B1BAD3] mb-1">Email Address</label>
+                  <label htmlFor="register-email" className="block text-xs font-semibold text-[#B1BAD3] mb-1">Email Address</label>
                   <div className="relative">
                     <Mail className="absolute left-3 top-2.5 w-4 h-4 text-[#B1BAD3]" />
                     <input
                       type="email"
+                      id="register-email"
                       value={registerForm.data.email}
-                      onChange={(e) => registerForm.setData('email', e.target.value)}
+                      aria-invalid={Boolean(registerForm.errors.email)}
+                      aria-describedby={registerForm.errors.email ? 'register-email-error' : undefined}
+                      onChange={(e) => {
+                        registerForm.setData('email', e.target.value);
+                        registerForm.clearErrors('email');
+                      }}
                       required
                       placeholder="john.doe@example.com"
                       className="w-full pl-9 pr-3 py-2 bg-[#0F212E] border border-[#213743] focus:border-[#1475E1] rounded-lg text-xs text-white outline-none"
                     />
                   </div>
+                  {registerForm.errors.email && (
+                    <p id="register-email-error" className="mt-2 text-xs text-red-300">{registerForm.errors.email}</p>
+                  )}
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">

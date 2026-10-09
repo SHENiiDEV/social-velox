@@ -9,7 +9,9 @@ class StaticPageController extends Controller
 {
     public function terms(): Response
     {
-        return Inertia::render('Static/Terms');
+        return Inertia::render('Static/Terms', [
+            'excludedCountries' => AuthController::$excludedCountries,
+        ]);
     }
 
     public function privacy(): Response
@@ -25,10 +27,5 @@ class StaticPageController extends Controller
     public function fairPlay(): Response
     {
         return Inertia::render('Static/FairPlay');
-    }
-
-    public function kycAml(): Response
-    {
-        return Inertia::render('Static/KycAml');
     }
 }

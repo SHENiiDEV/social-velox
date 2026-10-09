@@ -27,7 +27,7 @@
         </div>
 
         <h2>Welcome to Velox Play, {{ $user->name }}! 💎</h2>
-        <p>Your account has been successfully created and verified.</p>
+        <p>Your account has been successfully created.</p>
 
         <div class="info-box">
             <div class="info-row">
@@ -50,7 +50,7 @@
 
         <div class="footer">
             &copy; 2026 Velox Entertainment N.V. All rights reserved. <br>
-            Free-to-play sweepstakes social gaming platform. No real money gambling.
+            Social gaming platform for entertainment. No real money gambling.
         </div>
     </div>
 </body>

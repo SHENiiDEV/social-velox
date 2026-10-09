@@ -62,6 +62,7 @@ class AuthController extends Controller
             'postal_code' => ['required', 'string', 'max:30'],
             'agreed_to_terms' => ['required', 'accepted'],
         ], [
+            'email.unique' => 'An account with this email already exists. Sign in or reset your password.',
             'date_of_birth.before' => 'You must be at least 18 years old to register.',
             'agreed_to_terms.accepted' => 'You must agree to the Terms & Conditions and Privacy Policy.',
         ]);
@@ -117,6 +118,7 @@ class AuthController extends Controller
 
             if (Auth::user()->is_banned) {
                 Auth::logout();
+
                 return redirect()->back()->withErrors([
                     'email' => 'Your account has been blocked by administration.',
                 ]);
@@ -191,7 +193,7 @@ class AuthController extends Controller
             ->where('email', $request->email)
             ->first();
 
-        if (!$record || !hash_equals($record->token, $hashedToken)) {
+        if (! $record || ! hash_equals($record->token, $hashedToken)) {
             return redirect()->back()->withErrors([
                 'email' => 'This password reset token is invalid or has expired.',
             ]);
@@ -200,6 +202,7 @@ class AuthController extends Controller
         // Token expiry 60 minutes
         if (now()->diffInMinutes($record->created_at) > 60) {
             DB::table('password_reset_tokens')->where('email', $request->email)->delete();
+
             return redirect()->back()->withErrors([
                 'email' => 'This password reset link has expired. Please request a new one.',
             ]);
@@ -207,7 +210,7 @@ class AuthController extends Controller
 
         $user = User::where('email', $request->email)->first();
 
-        if (!$user) {
+        if (! $user) {
             return redirect()->back()->withErrors([
                 'email' => 'User not found.',
             ]);

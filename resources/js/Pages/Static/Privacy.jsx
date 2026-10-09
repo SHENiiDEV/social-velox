@@ -37,7 +37,7 @@ export default function Privacy() {
           <ul className="list-disc list-inside space-y-1.5 pl-2 text-white">
             <li><strong>Account Details:</strong> Email address, encrypted password hash, Date of Birth, Full Name, Phone Number, and Street Address.</li>
             <li><strong>Technical Data:</strong> IP address, browser type, operating system version, and device fingerprint.</li>
-            <li><strong>Game Activity:</strong> Spin history, Standard Coin (SC) balance logs, VIP point accumulation, and live chat message transcripts.</li>
+            <li><strong>Game Activity:</strong> Spin history, Social Coin (SC) balance logs, VIP point accumulation, and live chat message transcripts.</li>
           </ul>
         </section>
 
@@ -57,7 +57,7 @@ export default function Privacy() {
             </div>
             <div className="p-3 bg-[#0F212E] rounded-xl border border-[#213743]">
               <h4 className="font-bold text-white mb-1">Security & Fraud Prevention</h4>
-              <p className="text-[11px]">Enforcing 18+ age verification, multi-account detection, and AML screening.</p>
+              <p className="text-[11px]">Applying age eligibility rules using the date of birth supplied at registration, protecting accounts, and addressing misuse.</p>
             </div>
           </div>
         </section>
